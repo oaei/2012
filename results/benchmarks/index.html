@@ -1,0 +1,831 @@
+<html>
+<head>
+<title>Ontology Alignment Evaluation Initiative::Benchmarks</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+<style type="text/css">
+td { text-align:center; }
+td.text { text-align:left; }
+td.important {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+td.bleft { border-left: 1px solid black; }
+td.right { border-right: 1px solid black; }
+tr.header td  { background-color:#CCC; }
+tr.odd td  { background-color:#FFD; }
+tr.even td  { background-color:#FDF }
+tr.break td  { background-color:#EEE; }
+span.small { font-size:smaller; }
+caption { caption-side:bottom; } 
+</style>
+
+</head>
+<body>
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="http://oaei.ontologymatching.org/2011.5/">Ontology
+  Alignment Evaluation Initiative - OAEI 2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+<img width="150px" src="http://oaei.ontologymatching.org/oaeismall.jpg" style="float:right; margin-left: 15pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="150px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 15pt; border-style:none;"/></a>
+</div>
+
+<h1>Benchmark results for OAEI 2012</h1>
+
+<p><i>In the following we present the results of the OAEI 2012 evaluation of the benchmarks track. If you notice any kind of error, do not hesitate to contact J&eacute;r&ocirc;me Euzenat (see mail below).</i></p>
+
+<h2>Data set setting</h2>
+
+<p>The focus of this campaign was on scalability, i.e. the ability of matchers to deal with data sets of increasing number of elements. To that extent, we have generated five different benchmarks against which matchers have been evaluated: benchmark1 (<b>biblio</b>), benchmark2, benchmark3, benchmark4 and benchmark5 (<b>finance</b>). New benchmarks were generated following the same model of previous benchmarks, from seed ontologies from different domains and with different sizes.
+</p>
+
+<p>
+The following table summarizes the information about ontologies' sizes.
+</p>
+
+<center>
+<table border="1" style="width: 30%">
+  <caption></caption>
+  <col />
+  <col />
+  <col />
+  <col />
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <td align='center'>Test set</td>
+      <td align='center'>biblio</td>
+      <td align='center'>benchmark2 (commerce)</td>
+      <td align='center'>benchmark3 (bioinformatics)</td>
+      <td align='center'>benchmark4 (product design)</td>
+      <td align='center'>finance</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td colspan="5" align='center'>ontology size</td>
+    </tr>
+    <tr>
+      <td>classes+prop</td>
+      <td>97</td>
+      <td>247</td>
+      <td>354</td>
+      <td>472</td>
+      <td>633</td>
+    </tr>
+    <tr>
+      <td>instances</td>
+      <td>112</td>
+      <td>35</td>
+      <td>681</td>
+      <td>376</td>
+      <td>1113</td>
+    </tr>
+    <tr>
+      <td>entities</td>
+      <td>209</td>
+      <td>282</td>
+      <td>1035</td>
+      <td>848</td>
+      <td>1746</td>
+    </tr>
+    <tr>
+      <td>triples</td>
+      <td>1332</td>
+      <td>1562</td>
+      <td>5387</td>
+      <td>4262</td>
+      <td>21979</td>
+    </tr>
+  </tbody>
+</table>
+    
+</table>
+</center>
+
+
+<h2>Participation</h2>
+
+<p>
+From the 23 systems listed in the <a href="../index.html">2012 final results page</a>, 17 systems participated in this track. TOAST was only able to pass the tests of the Anatomy track; OMR follows a very strange strategy, generating alignments with mappings containing non-existing entities in one or both of the ontologies being matched; OntoK revealed several bugs when preliminary tests were executed, and developers were not able to fix all of them; requirements for executing CODI in our machines were not met due to academic license problems. For those reasons, these tools were not evaluated. Of course, we did not consider systems participating only in the Instance Matching track.
+</p>
+
+<h2>Experimental setting</h2>
+
+<p>
+As we stated before, the focus of this campaign was on scalability. We have addressed this from two aspects:
+<ul>
+	<li>Compliance: as usual, we compare results generated on top of the default setting against a reference alignment and compute precision, recall and f-measure.</li>
+	<li>Runtime: we analyze how far matching systems can deal with data sets of increasing number of elements including large ontologies. We report on measured runtimes for the tools with data sets of different benchmarks.</li>
+</ul>
+</p>
+
+<p>
+For each aspect all systems have been executed in the same conditions whose specifications are given below.
+</p>
+
+<h2>Compliance raw results</h2>
+
+<p>
+We have executed all systems on two two cores and 8GB RAM Debian virtual machines (VM) running continuously in parallel, except for the finance benchmark which required 10GB RAM for some systems. We follow the general recommendations for Linux operating systems allocating no more than 80% of available memory for running Java processes. 6GB RAM were allocated to Java processes running in 8GB RAM VMs; 8GB RAM were allocated to Java processes running in 10GB RAM Vms.</p>
+
+<p>
+For each benchmark seed ontology, a data set of 94 tests was automatically generated. From the whole systematic benchmark test set (111 tests), we excluded the tests that were not artificially generated: 102--104, 203--210, 230--231, 301--304. Runs for benchmarks 2, 3 and 4 were executed in blind mode. Just one run was done for each benchmark, because it was confirmed in previous campaigns, that even if some matchers exhibit non deterministic behavior on a test case basis, their average measures on the whole data set remains almost the same across different runs. The data sets used for <b>biblio</b> and <b>finance</b> benchmarks are available <a href="benchmark-datasets-OAEI2012.zip">here</a>. 
+</p>
+
+<p>
+The following table presents the harmonic means of precision, F-measure and recall for the five benchmark data sets for all the participants, along with their confidence-weighted values. The table also shows measures provided by edna, a simple edit distance algorithm on labels which is used as a baseline. ASE was not able to handle the <b>finance</b> data set, and MEDLEY did not completed the evaluation of <b>benchmark4</b> and <b>finance</b> data sets in a reasonable amount of time (less than 12 hours). The MapSSS results presented for <b>finance</b> are those obtained for the OAEI2011.5 campaign where we did not put any time limitation. The alignments produced by the tools for <b>biblio</b> and <b>finance</b> are available <a href="benchmark-results-OAEI2012.zip">here</a>.
+</p>
+
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0" rules="COLS">
+<caption><i>Harmonic means of precision, F-measure and recall, along with their confidence-weighted values</i></caption>
+<tr class="header"><td  class="text"> Matching system </td>
+<td colspan="3"> biblio </td>
+<td colspan="3"> benchmark2 </td>
+<td colspan="3"> benchmark3 </td>
+<td colspan="3"> benchmark4 </td>
+<td colspan="3"> finance </td>
+</tr>
+<tr class="header"><td  class="text">  </td>
+<td> Precision </td><td>F-measure</td><td>Recall</td>
+<td> Precision </td><td>F-measure</td><td>Recall</td>
+<td> Precision </td><td>F-measure</td><td>Recall</td>
+<td> Precision </td><td>F-measure</td><td>Recall</td>
+<td> Precision </td><td>F-measure</td><td>Recall</td>
+</tr>
+<tr class="even"><td class="text"> edna</td>
+<td>0.35(0.45)</td><td>0.41(0.47)</td><td>0.5</td>
+<td>0.46(0.61)</td><td>0.48(0.55)</td><td>0.5</td>
+<td>0.22(0.25)</td><td>0.3(0.33)</td><td>0.5</td>
+<td>0.31(0.37)</td><td>0.38(0.42)</td><td>0.5</td>
+<td>0.22(0.25)</td><td>0.3(0.33)</td><td>0.5</td>
+</tr>
+<tr class="odd"><td class="text"> AROMA</td>
+<td>0.98(0.99)</td><td>0.77(0.73)</td><td>0.64(0.58)</td>
+<td>0.97(0.98)</td><td>0.76(0.73)</td><td>0.63(0.58)</td>
+<td>0.38(0.43)</td><td>0.53(0.54)</td><td>0.83(0.73)</td>
+<td>0.96</td><td>0.73(0.7)</td><td>0.59(0.55)</td>
+<td>0.94</td><td>0.72(0.7)</td><td>0.58(0.56)</td>
+</tr>
+<tr class="even"><td class="text"> ASE</td>
+<td>0.49</td><td>0.51(0.52)</td><td>0.54</td>
+<td>0.72(0.74)</td><td>0.61</td><td>0.53</td>
+<td>0.27</td><td>0.36</td><td>0.54</td>
+<td>0.4(0.41)</td><td>0.45</td><td>0.51</td>
+<td>na</td><td>na</td><td>na</td>
+</tr>
+<tr class="odd"><td class="text"> AUTOMSv2</td>
+<td>0.97</td><td>0.69</td><td>0.54</td>
+<td>0.97</td><td>0.68</td><td>0.52</td>
+<td>0.99(1)</td><td>0.7</td><td>0.54</td>
+<td>0.91(0.92)</td><td>0.65</td><td>0.51(0.5)</td>
+<td>0.35*</td><td>0.42(0.39)*</td><td>0.55(0.46)*</td>
+</tr>
+<tr class="even"><td class="text"> GOMMA</td>
+<td>0.69(0.68)</td><td>0.48(0.43)</td><td>0.37(0.31)</td>
+<td>0.99</td><td>0.6(0.54)</td><td>0.43(0.38)</td>
+<td>0.93(0.94)</td><td>0.64(0.59)</td><td>0.49(0.43)</td>
+<td>0.99</td><td>0.57(0.51)</td><td>0.4(0.35)</td>
+<td>0.96</td><td>0.6(0.53)</td><td>0.43(0.37)</td>
+</tr>
+<tr class="odd"><td class="text"> Hertuda</td>
+<td>0.9</td><td>0.68</td><td>0.54</td>
+<td>0.93</td><td>0.67</td><td>0.53</td>
+<td>0.94</td><td>0.68</td><td>0.54</td>
+<td>0.9</td><td>0.66</td><td>0.51</td>
+<td>0.72</td><td>0.62</td><td>0.55</td>
+</tr>
+<tr class="even"><td class="text"> Hotmatch</td>
+<td>0.96</td><td>0.66</td><td>0.5</td>
+<td>0.99</td><td>0.68</td><td>0.52</td>
+<td>0.99</td><td>0.68</td><td>0.52</td>
+<td>0.99</td><td>0.66</td><td>0.5</td>
+<td>0.97</td><td>0.67</td><td>0.51</td>
+</tr>
+<tr class="odd"><td class="text"> LogMap</td>
+<td>0.73</td><td>0.56(0.51)</td><td>0.45(0.39)</td>
+<td>1</td><td>0.64(0.59)</td><td>0.47(0.42)</td>
+<td>0.95(0.96)</td><td>0.65(0.6)</td><td>0.49(0.44)</td>
+<td>0.99(1)</td><td>0.63(0.58)</td><td>0.46(0.41)</td>
+<td>0.95(0.94)</td><td>0.63(0.57)</td><td>0.47(0.4)</td>
+</tr>
+<tr class="even"><td class="text"> LogMapLt</td>
+<td>0.71</td><td>0.59</td><td>0.5</td>
+<td>0.95</td><td>0.66</td><td>0.5</td>
+<td>0.95</td><td>0.65</td><td>0.5</td>
+<td>0.95</td><td>0.65</td><td>0.5</td>
+<td>0.9</td><td>0.66</td><td>0.52</td>
+</tr>
+<tr class="odd"><td class="text"> MaasMtch</td>
+<td>0.54(0.9)</td><td>0.56(0.63)</td><td>0.57(0.49)</td>
+<td>0.6(0.93)</td><td>0.6(0.65)</td><td>0.6(0.5)</td>
+<td>0.53(0.9)</td><td>0.53(0.63)</td><td>0.53(0.48)</td>
+<td>0.54(0.92)</td><td>0.54(0.64)</td><td>0.54(0.49)</td>
+<td>0.59(0.92)</td><td>0.59(0.63)</td><td>0.58(0.48)</td>
+</tr>
+<tr class="even"><td class="text"> MapSSS</td>
+<td>0.99</td><td>0.87</td><td>0.77</td>
+<td>1</td><td>0.86</td><td>0.75</td>
+<td>1</td><td>0.82</td><td>0.7</td>
+<td>1</td><td>0.81</td><td>0.68</td>
+<td>0.99</td><td>0.83</td><td>0.71</td>
+</tr>
+<tr class="odd"><td class="text"> MEDLEY</td>
+<td>0.6(0.59)</td><td>0.54(0.53)</td><td>0.5(0.48)</td>
+<td>0.92(0.94)</td><td>0.65(0.63)</td><td>0.5(0.48)</td>
+<td>0.78</td><td>0.61(0.56)</td><td>0.5(0.43)</td>
+<td>to</td><td>to</td><td>to</td>
+<td>to</td><td>to</td><td>to</td>
+</tr>
+<tr class="even"><td class="text"> Optima</td>
+<td>0.89</td><td>0.63</td><td>0.49</td>
+<td>1</td><td>0.66</td><td>0.5</td>
+<td>0.97</td><td>0.69</td><td>0.53</td>
+<td>0.92</td><td>0.6</td><td>0.45</td>
+<td>0.96</td><td>0.56</td><td>0.4</td>
+</tr>
+<tr class="odd"><td class="text"> ServOMap</td>
+<td>0.88</td><td>0.58</td><td>0.43</td>
+<td>1</td><td>0.67</td><td>0.5</td>
+<td>1</td><td>0.67</td><td>0.5</td>
+<td>0.89</td><td>0.6(0.59)</td><td>0.45(0.44)</td>
+<td>0.92</td><td>0.63</td><td>0.48</td>
+</tr>
+<tr class="even"><td class="text"> ServOMapLt</td>
+<td>1</td><td>0.33</td><td>0.2</td>
+<td>1</td><td>0.51</td><td>0.34</td>
+<td>1</td><td>0.55</td><td>0.38</td>
+<td>1</td><td>0.41</td><td>0.26</td>
+<td>0.99</td><td>0.51</td><td>0.34</td>
+</tr>
+<tr class="odd"><td class="text"> WeSeE</td>
+<td>0.99</td><td>0.69(0.68)</td><td>0.53(0.52)</td>
+<td>1</td><td>0.69(0.68)</td><td>0.52</td>
+<td>1</td><td>0.7(0.69)</td><td>0.53</td>
+<td>1</td><td>0.66</td><td>0.5</td>
+<td>0.99</td><td>0.7(0.69)</td><td>0.54(0.53)</td>
+</tr>
+<tr class="even"><td class="text"> Wikimatch</td>
+<td>0.74</td><td>0.62</td><td>0.54</td>
+<td>0.97</td><td>0.67(0.68)</td><td>0.52</td>
+<td>0.96(0.97)</td><td>0.68</td><td>0.52</td>
+<td>0.94(0.95)</td><td>0.66</td><td>0.51</td>
+<td>0.74(0.75)</td><td>0.62(0.63)</td><td>0.54</td>
+</tr>
+<tr class="odd"><td class="text"> YAM++</td>
+<td>0.98(0.95)</td><td>0.83(0.18)</td><td>0.72(0.1)</td>
+<td>0.96(1)</td><td>0.89(0.72)</td><td>0.82(0.56)</td>
+<td>0.97(1)</td><td>0.85(0.7)</td><td>0.76(0.54)</td>
+<td>0.96(1)</td><td>0.83(0.7)</td><td>0.72(0.54)</td>
+<td>0.97(1)</td><td>0.9(0.72)</td><td>0.84(0.57)</td>
+</tr>
+</table>
+<p><small>n/a: not able to run this benchmark<br />
+to: timeout exceeded<br />
+*: uncompleted results<br />
+</small></p>
+</center>
+
+<p>
+The table shows that with few exceptions, all systems achieve higher levels of precision than recall for all benchmarks. The exceptions are the baseline; AROMA for <b>benchmark3</b>; ASE for <b>biblio</b>, <b>benchmark3</b> and <b>benchmark4</b>; AUTOMSv2 for <b>finance</b>; and MaasMatch which produced very similar values for both measures and for all benchmarks. Considering the baseline as a reference, no tool had a worst precision performance, and only ServOMapLt had a significantly lower recall, with LogMap having slightly lower values for the same measure.
+</p>
+
+<p>
+The test-by-test results on which this table is built are given in the
+following table:
+<center>
+<table>
+<tr><td><a href="biblio-benchmarks-r1.html">biblio</a></td><td><a href="weighted-biblio-benchmarks-r1.html">weighted</a></td></tr>
+<tr><td><a href="bch2-benchmarks-r1.html">benchmark 2</a></td><td><a href="weighted-bch2-benchmarks-r1.html">weighted</a></td></tr>
+<tr><td><a href="bch3-benchmarks-r1.html">benchmark 3</a></td><td><a href="weighted-bch3-benchmarks-r1.html">weighted</a></td></tr>
+<tr><td><a href="bch4-benchmarks-r1.html">benchmark 4</a></td><td><a href="weighted-bch4-benchmarks-r1.html">weighted</a></td></tr>
+<tr><td><a href="finance-benchmarks-r1.html">Finance</a></td><td><a href="weighted1-finance-benchmarks-r1.html">weighted</a> and <a href="weighted2-finance-benchmarks-r1.html">weighted2</a></td></tr>
+</table>
+</center>
+</p>
+
+<p>
+Confidence-weighted values have sense only for those tools which generate correspondences with confidence values different from one. These measures reward systems able to provide accurate confidence values, providing significant precision increasing for systems like edna and MaasMatch, which had possibly many incorrect correspondences with low confidence, and significant recall decreasing for AROMA, GO2A, LogMap and YAM++, which had apparently many correct correspondences with low confidence. The variation for YAM++ is quite impressive, specially for the biblio benchmark. 
+</p>
+
+<p>
+Based on the average F-measure for all benchmarks, which is shown in the next table, we observe that the group of best systems in each data set remains relatively the same across different benchmarks. Even if there is no best system for all benchmarks, YAM++, MapSSS and AROMA seems to generate the best alignments in terms of F-measure.
+</p>
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0" rules="COLS">
+<caption><i>Variability of results based on F-measure</i></caption>
+<tr class="header"><td  class="text"> Matching system </td>
+<td> biblio </td>
+<td > benchmark2 </td>
+<td> benchmark3 </td>
+<td> benchmark4 </td>
+<td> finance </td>
+<td>Average F-measure</td>
+</tr>
+<tr class="odd"><td class="text"> YAM++</td>
+<td>0.83</td>
+<td>0.89</td>
+<td>0.85</td>
+<td>0.83</td>
+<td>0.9</td>
+<td>0.86</td>
+</tr>
+<tr class="even"><td class="text"> MapSSS</td>
+<td>0.87</td>
+<td>0.86</td>
+<td>0.82</td>
+<td>0.81</td>
+<td>0.83</td>
+<td>0.84</td>
+</tr>
+<tr class="odd"><td class="text"> AROMA</td>
+<td>0.77</td>
+<td>0.76</td>
+<td>0.53</td>
+<td>0.73</td>
+<td>0.72</td>
+<td>0.70</td>
+</tr>
+<tr class="even"><td class="text"> WeSeE</td>
+<td>0.69</td>
+<td>0.69</td>
+<td>0.7</td>
+<td>0.66</td>
+<td>0.7</td>
+<td>0.69</td>
+</tr>
+<tr class="odd"><td class="text"> GOMMA</td>
+<td>0.67</td>
+<td>0.69</td>
+<td>0.7</td>
+<td>0.63</td>
+<td>0.66</td>
+<td>0.67</td>
+</tr>
+<tr class="even"><td class="text"> HotMatch</td>
+<td>0.66</td>
+<td>0.68</td>
+<td>0.68</td>
+<td>0.66</td>
+<td>0.67</td>
+<td>0.67</td>
+</tr>
+<tr class="odd"><td class="text"> Hertuda</td>
+<td>0.68</td>
+<td>0.67</td>
+<td>0.68</td>
+<td>0.66</td>
+<td>0.62</td>
+<td>0.66</td>
+</tr>
+<tr class="even"><td class="text"> Wikimatch</td>
+<td>0.62</td>
+<td>0.67</td>
+<td>0.68</td>
+<td>0.66</td>
+<td>0.62</td>
+<td>0.65</td>
+</tr>
+<tr class="odd">
+<td class="text"> LogMapLt</td>
+<td>0.59</td>
+<td>0.66</td>
+<td>0.65</td>
+<td>0.65</td>
+<td>0.66</td>
+<td>0.64</td>
+</tr>
+<tr class="even"><td class="text"> ServOMap</td>
+<td>0.58</td>
+<td>0.67</td>
+<td>0.67</td>
+<td>0.6</td>
+<td>0.63</td>
+<td>0.63</td>
+</tr>
+<tr class="odd"><td class="text"> Optima</td>
+<td>0.63</td>
+<td>0.66</td>
+<td>0.69</td>
+<td>0.6</td>
+<td>0.56</td>
+<td>0.63</td>
+</tr>
+<tr class="even"><td class="text"> AUTOMSv2</td>
+<td>0.69</td>
+<td>0.68</td>
+<td>0.7</td>
+<td>0.65</td>
+<td>0.39</td>
+<td>0.62</td>
+</tr>
+<tr class="odd"><td class="text"> LogMap</td>
+<td>0.56</td>
+<td>0.64</td>
+<td>0.65</td>
+<td>0.63</td>
+<td>0.63</td>
+<td>0.62</td>
+</tr>
+<tr class="even"><td class="text"> MEDLEY</td>
+<td>0.54</td>
+<td>0.65</td>
+<td>0.61</td>
+<td>to</td>
+<td>to</td>
+<td>0.60</td>
+</tr>
+<!--<tr class="odd"><td class="text"> G02A</td>
+<td>0.48</td>
+<td>0.6</td>
+<td>0.64</td>
+<td>0.57</td>
+<td>0.6</td>
+<td>0.58</td>
+</tr>-->
+<tr class="odd"><td class="text"> MaasMatch</td>
+<td>0.56</td>
+<td>0.6</td>
+<td>0.53</td>
+<td>0.54</td>
+<td>0.59</td>
+<td>0.56</td>
+</tr>
+<tr class="even"><td class="text"> ASE</td>
+<td>0.51</td>
+<td>0.61</td>
+<td>0.36</td>
+<td>0.45</td>
+<td>na</td>
+<td>0.48</td>
+</tr>
+<tr class="odd"><td class="text"> ServOMapLt</td>
+<td>0.33</td>
+<td>0.51</td>
+<td>0.55</td>
+<td>0.41</td>
+<td>0.51</td>
+<td>0.46</td>
+</tr>
+<tr class="even"><td class="text"> edna</td>
+<td>0.41</td>
+<td>0.48</td>
+<td>0.3</td>
+<td>0.38</td>
+<td>0.3</td>
+<td>0.37</td>
+</tr>
+</table>
+<p><small>na: not able to pass this test<br />
+to: timeout exceeded<br />
+*: uncompleted results<br />
+</small></p>
+</center>
+
+<p>
+On the average, all matchers have better performance than the baseline, and they behave relatively stable across all benchmarks. Nevertheless, we observe a high variance in the results of some systems. Outliers are, for instance, a poor precision for AROMA with <b>benchmark3</b> and a poor recall for ServOMapLt with <b>biblio</b>. These variations might depend on inter-dependencies between matching systems and datasets, and needs additional analysis requiring a deep knowledge of the evaluated systems. 
+</p>
+
+<p>
+Finally, the next table shows the results of the tools that have participated in the OAEI2011 and/or OAEI2011.5 campaigns. We present only the <b>biblio</b> and <b>finance</b> benchmarks because they were used in those campaigns, and also in OAEI2012. Even if the figures shown in the table were obtained with different data sets generated with the same test generator from the same seed ontologies, the comparison is valid. Previous experiments have shown that the F-measures obtained for  data sets generated in those conditions remained pretty much the same [1].</p>
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0" rules="COLS">
+<caption><i>Results across OAEI2011, OAEI2011.5 and OAEI2012 campaigns</i></caption>
+<tr class="header"><td  class="text"> Matching system </td>
+<td colspan="3"> biblio</td>
+<td colspan="3"> finance </td>
+</tr>
+<tr class="header">
+<td>  </td>
+<td  class="text"> 2011 </td>
+<td> 2011.5</td>
+<td> 2012 </td>
+<td  class="text"> 2011 </td>
+<td> 2011.5</td>
+<td> 2012 </td>
+</tr>
+<tr class="odd"><td class="text">AROMA</td>
+<td>0.76</td>
+<td>0.76</td>
+<td>0.77</td>
+<td>0.70</td>
+<td>0.70</td>
+<td>0.72</td>
+</tr>
+<tr class="even"><td class="text">AUTOMSv2</td>
+<td>---</td>
+<td>0.69</td>
+<td>0.69</td>
+<td>---</td>
+<td>na</td>
+<td>0.39</td>
+</tr>
+<tr class="odd"><td class="text">GOMMA</td>
+<td>---</td>
+<td>0.67</td>
+<td>0.67</td>
+<td>---</td>
+<td>0.66</td>
+<td>0.66</td>
+</tr>
+<tr class="even"><td class="text">Hertuda</td>
+<td>---</td>
+<td>0.67</td>
+<td>0.68</td>
+<td>---</td>
+<td>0.60</td>
+<td>0.62</td>
+</tr>
+<tr class="odd"><td class="text">LogMap</td>
+<td>0.57</td>
+<td>0.48</td>
+<td>0.56</td>
+<td>na</td>
+<td>0.60</td>
+<td>0.63</td>
+</tr>
+<tr class="even"><td class="text">LogMapLt</td>
+<td>---</td>
+<td>0.58</td>
+<td>0.59</td>
+<td>---</td>
+<td>0.66</td>
+<td>0.66</td>
+</tr>
+<tr class="odd"><td class="text">MaasMatch</td>
+<td>0.58</td>
+<td>0.50</td>
+<td>0.56</td>
+<td>0.61</td>
+<td>0.52</td>
+<td>0.59</td>
+</tr>
+<tr class="even"><td class="text">MapSSS</td>
+<td>0.84</td>
+<td>0.86</td>
+<td>0.87</td>
+<td>to</td>
+<td>0.83</td>
+<td>0.83</td>
+</tr>
+<tr class="odd"><td class="text">Optima</td>
+<td>0.65</td>
+<td>---</td>
+<td>0.63</td>
+<td>to</td>
+<td>---</td>
+<td>0.56</td>
+</tr>
+<tr class="even"><td class="text">WeSeE</td>
+<td>---</td>
+<td>0.67</td>
+<td>0.69</td>
+<td>---</td>
+<td>0.69</td>
+<td>0.70</td>
+</tr>
+<tr class="odd"><td class="text">YAM++</td>
+<td>0.86</td>
+<td>0.83</td>
+<td>0.83</td>
+<td>to</td>
+<td>na</td>
+<td>0.90</td>
+</tr>
+</table>
+<p><small>na: not able to pass this test<br />
+to: timeout exceeded<br />
+</small></p>
+</center>
+
+<p>
+Small variations are observed in the table across different campaigns. With respect to <b>biblio</b>, negative variations between 2-4% for some tools and positive variations between 1-3% for others are observed. LogMap and MaasMatch fell more than 10% percent in the OAEI2011.5 campaign, but they recovered well in OAEI2012.</br>
+For <b>finance</b>, the number of systems that passed the tests increased, either because bugs reported with versions used in previous campaigns were fixed, either because we relaxed the time out constraint imposed for this ontology in OAEI2011. For many tools that passed the tests in previous campaigns, positive variations between 1-3% are observed.
+</p>
+
+<h2>Precision/recall graphs</h2>
+<p>
+For the systems which have provided their results with confidence measures different from 1 or 0, it is possible to draw precision/recall graphs in order to compare them; these graphs are given in the next figure. The graphs show the real precision at n% recall and they stop when no more correspondences are available; then the end point corresponds to the precision and recall reported in the first table shown above.
+</p>
+
+<div style="text-align: center;">
+<p>
+<img
+src="precision-recall.jpg" alt="Precision-recall graphs for Benchmark datasets" 
+style="border-style: none; float: center; margin-left: 5pt;">
+</p>
+
+<p>
+Precision/recall graphs for benchmarks. The alignments generated by matchers are cut under a threshold necessary for achieving n% recall and the corresponding precision is computed.
+</p>
+
+</div>
+
+<h2>Runtime results</h2>
+
+<p>
+Runtime scalability has been evaluated from two perspectives: on the one hand we considered the five seed ontologies from different domains and with different sizes; on the other hand we considered the <b>finance</b> ontology scaling it by reducing its size by different factors (25%, 50% and 75%). For the two modalities, the data sets were composed of a subset of a whole systematic benchmark; tests have been carefully selected in order to be representative of all the alterations used to build a whole benchmark data set. The tests used were 101, 201-4, 202-4, 221, 228, 233, 248-4, 250-4, 253-4, 254-4, 257-4, 260-4, 261-4, 265, 266.
+</p>
+
+<p>
+All  the experiments were done on a 3GHz Xeon 5472 (4 cores) machine running Linux Fedora 8 with 8GB RAM.  The following tables present the runtime measurement in seconds for the data sets used; systems on the table are ordered by least cumulated time. Semi-log graphs for runtime measurement against benchmark size in terms of classes and properties are given after the tables. 
+</p>
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0" rules="COLS">
+<caption><i>Runtime measurement (in seconds) for the finance data sets</i></caption>
+<tr class="header"><td  class="text"> Matching system </td>
+<td> finance25% </td>
+<td> finance50% </td>
+<td> finance75% </td>
+<td> finance </td>
+<td> Total time </td>
+</tr>
+<tr class="odd">
+<td class="text">LogMapLt</td><td>27</td><td>34</td><td>35</td><td>35</td><td>131</td>
+</tr>
+<tr class="even">
+<td class="text">ServOMapLt</td><td>30</td><td>35</td><td>41</td><td>44</td><td>150</td>
+</tr>
+<tr class="odd">
+<td class="text">GOMMA</td><td>43</td><td>50</td><td>44</td><td>49</td><td>186</td>
+</tr>
+<tr class="even">
+<td class="text">LogMap</td><td>39</td><td>48</td><td>49</td><td>54</td><td>190</td>
+</tr>
+<tr class="odd">
+<td class="text">ServOMap</td><td>36</td><td>46</td><td>57</td><td>64</td><td>203</td>
+</tr>
+<tr class="even">
+<td class="text">AROMA</td><td>44</td><td>44</td><td>66</td><td>77</td><td>231</td>
+</tr>
+<!-- <tr class="odd">
+<td class="text">GO2A</td><td>195</td><td>203</td><td>201</td><td>203</td><td>802</td>
+</tr>-->
+<tr class="odd">
+<td class="text">YAM++</td><td>na</td><td>176</td><td>256</td><td>386</td><td>818</td>
+</tr>
+<tr class="even">
+<td class="text">Hertuda</td><td>52</td><td>119</td><td>284</td><td>452</td><td>907</td>
+</tr>
+<tr class="odd">
+<td class="text">Hotmatch</td><td>61</td><td>136</td><td>309</td><td>522</td><td>1028</td>
+</tr>
+<tr class="even">
+<td class="text">MaasMatch</td><td>794</td><td>201</td><td>407</td><td>833</td><td>1535</td>
+</tr>
+<tr class="odd">
+<td class="text">AUTOMSv2</td><td>244</td><td>495</td><td>869</td><td>1535</td><td>3143</td>
+</tr>
+<tr class="even">
+<td class="text">Wikimatch</td><td>841</td><td>1913</td><td>3001</td><td>4350</td><td>10105</td>
+</tr>
+<tr class="odd">
+<td class="text">WeSeE</td><td>1174</td><td>2347</td><td>3780</td><td>5163</td><td>12464</td>
+</tr>
+<tr class="even">
+<td class="text">Optima</td><td>685</td><td>2434</td><td>5588</td><td>8234</td><td>16941</td>
+</tr>
+<tr class="odd">
+<td class="text">MapSSS</td><td>87622</td><td>71191</td><td>78578</td><td>82841</td><td>320232</td>
+</tr>
+<tr class="even">
+<td class="text">MEDLEY</td><td>62246</td><td>132987</td><td>to</td><td>to</td><td>195233</td>
+</tr>
+<tr class="odd">
+<td class="text">ASE</td><td>na</td><td>na</td><td>na</td><td>na</td>
+</tr>
+</table>
+<p><small>na: not able to run this benchmark<br />
+to: timeout exceeded<br />
+</small></p>
+</center>
+
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0" rules="COLS">
+<caption><i>Runtime measurement (in seconds) for the five benchmarks</i></caption>
+<tr class="header"><td  class="text"> Matching system </td>
+<td> biblio </td>
+<td> benchmark2 </td>
+<td> benchmark3 </td>
+<td> benchmark4 </td>
+<td> finance </td>
+<td> Total time </td>
+</tr>
+<tr class="odd">
+<td class="text">LogMapLt</td><td>6</td><td>6</td><td>11</td><td>11</td><td>35</td><td>69</td>
+</tr>
+<tr class="even">
+<td class="text">ServOMapLt</td><td>7</td><td>9</td><td>15</td><td>13</td><td>44</td><td>88</td>
+</tr>
+<tr class="odd">
+<td class="text">LogMap</td><td>15</td><td>17</td><td>26</td><td>26</td><td>54</td><td>138</td>
+</tr>
+<tr class="even">
+<td class="text">ServOMap</td><td>12</td><td>16</td><td>26</td><td>34</td><td>64</td><td>152</td>
+</tr>
+<tr class="odd">
+<td class="text">GOMMA</td><td>17</td><td>21</td><td>35</td><td>38</td><td>59</td><td>160</td>
+</tr>
+<tr class="even">
+<td class="text">AROMA</td><td>8</td><td>11</td><td>127</td><td>18</td><td>77</td><td>241</td>
+</tr>
+<tr class="odd">
+<td class="text">Hertuda</td><td>9</td><td>38</td><td>96</td><td>46</td><td>452</td><td>641</td>
+</tr>
+<tr class="even">
+<td class="text">HotMatch</td><td>13</td><td>45</td><td>144</td><td>67</td><td>522</td><td>791</td>
+</tr>
+<!-- <tr class="odd">
+<td class="text">GO2A</td><td>165</td><td>166</td><td>174</td><td>173</td><td>203</td><td>881</td>
+</tr> -->
+<tr class="odd">
+<td class="text">YAM++</td><td>108</td><td>97</td><td>115</td><td>182</td><td>386</td><td>888</td>
+</tr>
+<tr class="even">
+<td class="text">MaasMatch</td><td>24</td><td>140</td><td>487</td><td>220</td><td>833</td><td>1704</td>
+</tr>
+<tr class="odd">
+<td class="text">AUTOMSv2</td><td>58</td><td>161</td><td>519</td><td>421</td><td>1535</td><td>2694</td>
+</tr>
+<tr class="even">
+<td class="text">WikiMatch</td><td>577</td><td>1059</td><td>2158</td><td>1532</td><td>4350</td><td>9676</td>
+</tr>
+<tr class="odd">
+<td class="text">WeSeE</td><td>411</td><td>1100</td><td>1878</td><td>1627</td><td>5163</td><td>10179</td>
+</tr>
+<tr class="even">
+<td class="text">Optima</td><td>188</td><td>882</td><td>1972</td><td>2001</td><td>8234</td><td>13277</td>
+</tr>
+<tr class="odd">
+<td class="text">MapSSS</td><td>21</td><td>59</td><td>299</td><td>355</td><td>82841</td><td>83575</td>
+</tr>
+<tr class="even">
+<td class="text">ASE</td><td>26</td><td>69</td><td>690</td><td>276</td><td>na</td><td>1061</td>
+</tr>
+<tr class="odd">
+<td class="text">MEDLEY</td><td>67</td><td>2986</td><td>65810</td><td>to</td><td>to</td><td>68863</td>
+</tr>
+</table>
+<p><small>na: not able to run this benchmark<br />
+to: timeout exceeded<br />
+</small></p>
+</center>
+
+<div style="text-align: center;">
+<p>
+<img
+src="financeRT.jpg" alt="Runtimes in Finance datasets" 
+style="border-style: none; float: center; margin-left: 5pt;">
+</p>
+
+<p>Runtime measurement VS ontology size (classes+properties) for finance data sets</p>
+</div>
+
+<div style="text-align: center;">
+<p>
+<img
+src="benchmarksRT.jpg" alt="Runtimes in Benchmark datasets" 
+style="border-style: none; float: center; margin-left: 5pt;">
+</p>
+
+<p>Runtime measurement VS ontology size (classes+properties) for all benchmarks</p>
+</div>
+
+<p>
+Some observations can be done from the graphs:
+</p>
+
+<ol>
+	<li>For the finance tests, where the structure and the knowledge domain between the ontologies is preserved with a high degree, the majority of tools have a monotonic increasing runtime, which is indeed what we expected. The exception is MapSSS which exhibits almost a constant value.</li>
+	<li>On the contrary, this does not happen for the benchmark tests, for which the <b>benchmark3</b> test causes a break in the monotonic behavior. The reason could be that this ontology has a more complex structure than the other ones, and that this fact affects some matchers more than others.</li>
+	<li>There is a set of tools that distance themselves from the others: LogMapLt, ServOMapLt, LogMap, ServOMap, GOMMA and Aroma are the fastest tools, and are able to process large ontologies in a short time. On the contrary, there exist tools that were not able to deal with large ontologies in the same conditions: MEDLEY and MapSSS fall in this category.</li>
+</ol>
+
+<p>
+The results obtained this year allow us to confirm something that was observed in OAEI2011 and OAEI2011.5: we can not conclude on a general correlation between runtime and quality of alignments. Not always the slowest tools provide the best compliance results, neither do the tools having short response times.
+</p>
+
+<h2>Contact</h2>
+
+<p>This track is organized by Jos&eacute; Luis Aguirre and J&eacute;r&ocirc;me Euzenat.
+If you have any problems working with the ontologies, any questions or suggestions,
+feel free to write an email to jerome [.] euzenat [at] inria [.] fr</p>
+
+<h2>Bibliography</h2>
+
+<p>[1] Maria Ro&#351;oiu, C&aacute;ssia Trojahn dos Santos, and J&eacute;r&ocirc;me Euzenat. Ontology matching benchmarks: generation and evaluation. In Pavel Shvaiko, Isabel Cruz, J&eacute;r&ocirc;me Euzenat, Tom Heath, Ming Mao, and Christoph Quix, editors, Proc. 6th International Workshop on Ontology Matching (OM) collocated with ISWC, Bonn (Germany), 2011.</p>
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2012/results/benchmarks/index.html</div>
+<!--$Id$-->
+</div>
+</body>
+</html>

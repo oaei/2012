@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>OAEI 2012::Library Track</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI-2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<h1><img  width="150px" src="book1.png"/> Library Track</h1>
+
+<p><b><a href="../results/library/index.html">Results are now available</a></b></p>
+
+<h2>Description</h2>
+
+<p>
+Libraries play an important role in the linked data web, and they widely agree that linked data technologies are ideal to integrate the data of libraries around the world and to foster the collaboration on cataloguing among the libraries. Library data does not only consist of the vast amount of cataloguing data, but especially -- and probably more interesting for other communities -- also of authority data, i.e., normed descriptions of locations, events, persons, corporate bodies, and subject concepts. The subject concepts are usually organized in more or less hierarchical knowledge organization systems, together with semantic relations between the concepts. A thesaurus is such a knowledge organization system that is used for indexing purposes and that provides quasi-synonymous, describing labels for each concept. Thesauri are sometimes referred to as lightweight ontologies, however, we will see that this definition can be misleading.
+</p>
+
+<p>Thesauri, and authority data in general, have a long history in libraries and are actively used and maintained by information professionals and domain experts. Due to their high quality and their long-term development, they could function as a "backbone of the Semantic Web".
+</p>
+<p>
+Most thesauri are domain-dependent and specialized to be used within a certain field, e.g., to index publications with an economical focus. During previous experiments, we examined the topical overlap between the two thesauri used in this challenge: TheSoz (social sciences) and STW (economics). They share not only a lot of concepts, there is also a manually created alignment that can be used as reference. Many thesauri exist that cover the same or overlapping domains, often in different languages. Multilingual thesauri are an important means to bridge the gap between catalogs in different languages, so that users can search for relevant literature using their own language. Another possibility is the creation of links between concepts across different thesauri, possibly in different languages. Such alignments -- or correspondences or cross-concordances -- can be exploited to mutually add further information to both thesauri and subsequently improve the retrieval. Therefore, for many, selected thesauri exist alignments that are manually created by domain experts. Nevertheless, the automatic identification of alignments is strongly desired, mainly due to two reasons: First, the manual creation of alignments between all existing thesauri is not feasible, so additional alignments have to be created, possibly by exploiting existing alignments (e.g., their transitivity). Second, automatically created alignments can be used to improve and enhance existing alignments, after approval by a domain expert. This is necessary, as most existing alignments are not complete and even if they are supposed to be complete, they have to be maintained just like the thesauri themselves, i.e., a constant effort is required to keep them up-to-date.
+</p>
+
+<p>This library track is a new track within OAEI. However, there has already been a <a href="http://oaei.ontologymatching.org/2009/library/">library track</a> from 2007 to 2009 using different thesauri, as well as other thesaurus tracks like the <a href="http://oaei.ontologymatching.org/2006/food/">food track</a> and the <a href="http://oaei.ontologymatching.org/2007/environment/">environment track</a>. A common motivation is that these tracks use a real-world scenario, i.e., real thesauri. For us, it is still a motivation to develop a better understanding, how thesauri differ from ontologies and how these differences affect state-of-the-art ontology matchers. We hope that the community accepts the challenge and that subsequently significant improvements can be seen that push the quality of automatic alignments between thesauri. Furthermore, we will use the matching results as input for the maintainers of the reference alignment to improve the alignment. While a full manual evaluation of all matching results is certainly not feasible, this way we constantly improve the reference alignment and mitigate possible weaknesses and incompleteness.</p>
+
+<!--h2>Description</h2>
+
+<p>The library track  is a real-word task to match the STW and the TheSoz thesaurus. Both provide a vocabulary for economic resp. social science subjects and are used by libraries for indexation and retrieval. Altogether, the goal of this track is to show whether the matching systems can handle these lightweight ontologies including a huge amount of concepts and additional descriptions. To evaluate the results two steps are performed: first the automatic evaluation against an existing reference alignment and second the manual consideration of correspondences which are not included in the reference alignment.</p>
+
+<p>The library track uses two real-world thesauri, that are in many aspects comparable. They have roughly the same size, are both originally developed in German, are today both multilingual, both have English translations, and, most important, despite being from two different domains, they have huge overlapping areas. Not least, both are freely available in RDF using SKOS.
+</p-->
+
+<h2>Data set</h2>
+
+<p>For this track, we use specific versions of the thesauri where extensions like SKOS-XL or own ones are not included.<br/> 
+There are two possibilites to run the data set. You can either download the data set or run it on the SEALS platform.
+</p>
+
+<h3>Download</h3>
+
+<p>
+<ul>
+<li><a href="LibrarySKOSDataSet.zip">SKOS-Version</a> (recommended)</li>
+<li><a href="LibraryOWLDatSet.zip">OWL-Version</a> (see remarks below)</li>
+<li><a href="referenceAll.rdf">Reference Alignment (Alignment Format)</a></li>
+</ul>
+This reference alignment only contains equivalence correspondences between descriptors. Other correspondences, e.g. with subsumption relation or between descriptors and non-descriptors, 
+will be manually checked, if possible. It is not a strict 1:1 alignment!
+This is the updated reference alignment with additional correspondences which have been found by the matching systems.
+</p>
+
+<h3>Parameter for the SEALS platform</h3>
+
+<p>
+<div class="testsuite">
+<span class="title">Library SKOS Testsuite</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://seals-test.sti2.at/tdrs-web/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">05297c9c-ad72-4aba-995a-bda5f0bd2067</span></li>
+	<li>Version-ID: <span class="testsuiteid">e497e6b5-b6ef-4293-be24-9dccda76d0ff</span></li>
+</ul>
+</div>
+</p>
+
+<p>
+<div class="testsuite">
+<span class="title">Library OWL Testsuite with complete reference alignment</span></li>
+<ul>
+	<li>Repository: <span class="testsuiteid">http://seals-test.sti2.at/tdrs-web/</span></li>
+	<li>Suite-ID: <span class="testsuiteid">05297c9c-ad72-4aba-995a-bda5f0bd2067</span></li>
+	<li>Version-ID: <span class="testsuiteid">ced13a5c-b055-4d11-b9c1-a4d2a53e1f7d</span></li>
+</ul>
+</div>
+</p>
+
+<h3>Transformation</h3>
+
+<p>Ontology matching systems taking part in the OAEI only work on OWL ontologies and are not (yet) ready to deal with the specialties of a thesaurus. To get first results and to lower the barrier of taking part in this challenge, we provide OWL versions of the thesauri, generated as follows:
+<br/>
+skos:concept &#x2794 owl:class<br/>
+skos:prefLabel, skos:altLabel &#x2794 rdfs:label <br/>
+skos:scopeNote, skos:notation &#x2794 rdfs:comment<br/>
+skos:narrower &#x2794 rdfs:superClassOf <br/>
+skos:broader &#x2794 rdfs:subClassOf <br/>
+skos:related &#x2794 rdfs:seeAlso<br/>
+</br>
+This transformation obviously is not loss-less. First and foremost, within the ontology, it is not recognizable which label is the preferred one and which ones are alternative labels. Since matching systems mostly have to focus on the labels, this transformation might lead to suboptimal results. There are, however, more fundamental differences between ontologies and thesauri that we show in the next section.</p>
+
+<h4>URI Transformation</h4>
+
+<p>We invented a new namespace for the OWL version to avoid any confusion with the original data. First, we changed the base namespaces as following:<br/><br/>
+http://zbw.eu/stw/ &#x2794 http://stw.owl<br/>
+http://lod.gesis.org/thesoz/ &#x2794 http://thesoz.owl<br/><br/> 
+</p>
+<p>
+Within the original data, the concepts are divided into descriptors and non-descriptors. This disitnction is dropped during the transformation into OWL. Thus, the corresponding encoding into the URIs is also omitted. 
+Moreover, only letters and dots are permitted within the URI. Examples: <br/>
+<br/>
+http://zbw.eu/stw/thsys/72180 &#x2794 http://stw.owl#72180<br/>
+http://zbw.eu/stw/descriptor/16207-5 &#x2794 http://stw.owl#16207.5<br/>
+
+http://lod.gesis.org/thesoz/classification/4.1.07 &#x2794 http://thesoz.owl#4.1.07<br/>
+http://lod.gesis.org/thesoz/concept/10034303 &#x2794 http://thesoz.owl#10034303<br/>
+<br/>
+These transformations simplify the matching but nevertheless the original data can be reconstructed.
+</p>
+
+<h2>Test data</h2>
+
+<p>The library track uses two real-world thesauri, that are in many aspects comparable. They have roughly the same size, are both originally developed in German, are today both multilingual, both have English translations, and, most important, despite being from two different domains, they have huge overlapping areas. Not least, both are freely available in RDF using SKOS.</p>
+
+<h3>STW</h3>
+
+<p>The STW Thesaurus for Economics provides vocabulary on any economic subject: more than 6,000 standardized subject headings (skos:Concepts, with preferred labels in English and German) and 19,000 additional keywords (skos:altLabels) in both languages. The vocabulary was developed for indexing purposes in libraries and economic research institutions and includes technical terms used in law, sociology, or politics, and geographic names. The entries are richly interconnected by 16,000 skos:broader/narrower and 10,000 skos:related relations. An additional hierarchy of main categories provides a high level overview. The vocabulary is maintained on a regular basis by <a href="http://zbw.eu/index-e.html">ZBW</a> German National Library of Economics - Leibniz Centre for Economics and has been translated into SKOS.</p>
+
+<h3>TheSoz</h3>
+
+<p>The Thesaurus for the Social Sciences (TheSoz) serves as a crucial instrument for indexing documents and research information in the social sciences. It contains overall about 12,000 keywords, from which 8,000 are standardized subject headings (in English and German) and 4,000 additional keywords. The thesaurus covers all topics and sub-disciplines of the social sciences. Additionally terms from associated and related disciplines are included in order to support an accurate and adequate indexing process of interdisciplinary, practical-oriented and multi-cultural documents. The thesaurus is owned and maintained by <a href="http://www.gesis.org/en/home">GESIS</a>- Leibniz Institute for the Social Sciences and is available in SKOS. </p>
+
+<h2>Goal</h2>
+
+<p>Since the existing mapping of STW and TheSoz has been manually created by domain experts in the <a href="http://edoc.hu-berlin.de/conferences/dc-2008/mayr-philipp-177/PDF/mayr.pdf">KoMoHe project</a> and does not cover the changes and enhancements in both thesauri since 2006, the evaluation is supposed to show whether the creation of the alignment can be automated and to which degree. Moreover, the could possibly inform further automatic or semi-automatic mapping precedures to be implemented for a regular maintenance of the mapping. Additionally, we would like to see how current state-of-the-art matching systems are able to deal with lightweight ontologies which are very often used in practice. Due to the large amount of concepts together with the plenty of semantic relations and additional keywords, the matching systems need to find a way how to deal with these conditions. Thus, it should become clear which matching techniques are best suitable for such real-world tasks. 
+</p>
+
+<h2>Organizers</h2>
+
+<p>
+Dominique Ritze (Mannheim University Library)  dominique[.]ritze[at]bib[.]uni-mannheim[.]de<br/>
+Kai Eckert (Mannheim University Library)<br/>
+Benjamin Zapilko (GESIS)<br/>
+Joachim Neubert (ZBW)
+</p>
+
+<div class="address">
+Original page: <a href="http://web.informatik.uni-mannheim.de/oaei-library/2012/">http://web.informatik.uni-mannheim.de/oaei-library/2012/</a> [cached: 24/06/2014]
+<div class="footer">http://oaei.ontologymatching.org/2012/library/</div>
+</div>
+</body>
+</html>

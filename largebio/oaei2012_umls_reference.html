@@ -1,0 +1,64 @@
+<html><head><html>
+<head>
+<title>OAEI 2012::Large BioMed Track</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI-2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<h1>UMLS-based reference alignments</h1>
+
+<p>UMLS Metathesaurus [1] (2009AA) has been selected as the basis for the 
+track reference alignments. 
+Although the standard UMLS distribution does not directly provide sets of "mappings" (in the OAEI sense) 
+between the integrated ontologies (e.g. FMA, NCI and SNOMED CT), it is relatively straightforward to extract mapping sets from 
+the information provided in the MRCONSO.RRF distribution file (see [2] for details).</p>
+
+<p>It was noticed, however, that the integration of the (formally represented) UMLS mappings together with 
+the input ontologies was leading to numerous unsatisfiable classes [2].</p>
+
+<p>In the OAEI 2012 we have considered two refinements of the UMLS mappings 
+that do not lead to (many) unsatisfiable classes.</p>
+<ul>
+<li>LogMap's refinement: created with LogMap's repair facility [3].</li>
+<li>Alcomo's refinement: created with Alcomo debugging system [4].</li>
+</ul>
+</p>
+<p>Note that LogMap and Alcomo use incomplete techniques and the refined reference alignment 
+may still lead to unsatisfiable classes when integrated with the input ontologies.</p>
+
+<p>Please consider citing [1-4] when you use the UMLS-based reference alignments.</p>
+
+<h3>References</h3>
+
+<ol>
+<li>O. Bodenreider: <i>The Unified Medical Language System (UMLS): integrating
+biomedical terminology</i>. Nucleic acids research 32 (2004)   
+<a href="http://nar.oxfordjournals.org/content/32/suppl_1/D267.full">[url]</a></li>
+
+<li>E. Jimenez-Ruiz, B. Cuenca Grau, I. Horrocks, and R. Berlanga: <i>Logic-based assessment 
+of the compatibility of UMLS ontology sources.</i> J Biomed. Sem. 2 (2011) 
+<a href="http://www.jbiomedsem.com/content/2/S1/S2">[url]</a></li>
+
+<li>E. Jimenez-Ruiz, B. Cuenca Grau: <i>Logmap: Logic-based and scalable ontology matching.</i> 
+In: 10th International Semantic Web Conference, 273-288 (2011) 
+<a href="http://code.google.com/p/logmap-matcher/">[url]</a></li>
+
+<li>Christian Meilicke. <i>Alignment Incoherence in Ontology Matching.</i> University of Mannheim, 
+Chair of Artificial Intelligence (2011) <a href="http://web.informatik.uni-mannheim.de/alcomo/">[url]</a></li>
+
+</ol>
+
+<div class="address">
+Original page: <a href="http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/oaei2012_umls_reference.html">http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/oaei2012_umls_reference.html</a> [cached: 24/06/2014]
+<div class="footer">http://oaei.ontologymatching.org/2012/largebio/oaei2012_umls_reference.html</div>
+</div>
+</body></html>

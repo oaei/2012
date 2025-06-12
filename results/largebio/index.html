@@ -1,0 +1,1798 @@
+<html><head>
+<title>OAEI 2012::Large BioMed Track</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI-2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<h1>Large biomedical ontology results</h1>
+
+<p>
+We have run the evaluation in a high performance server with 16 CPUs and allocating 15 Gb RAM.
+In total, 15 out of 23 participating systems/configurations have been able to cope with at least one of the tasks of the track matching problem.
+Optima and MEDLEY failed to complete the smallest task with a time out of 24 hours, while OMR, OntoK, ASE and WeSeE, 
+threw an Exception during the matching process.
+CODI was evaluated in a different setting using only 7Gb and threw an exception related to insufficient memory when processing the smallest 
+matching task.
+TOAST was not evaluated since it was only configured for the Anatomy track and it required a complex installation.
+LogMapLt, a string matcher that exploits the creation of an inverted file to efficiently compute correspondences, has been used as 
+baseline.
+</p>
+
+<p>
+Together with Precision, Recall, F-measure and runtimes we have also evaluated the coherence of alignments. We have reported (1) number of 
+unsatisfiabilities when reasoning (using <a href="http://www.hermit-reasoner.com/">HermiT</a>) 
+with the input ontologies together with the computed mappings, (2) the ratio/degree of unsatisfiable classes 
+with respect to the size of the merged ontology (based on the <i>Unsatisfiability Measure</i> proposed in [1]), and (3) an approximation of the
+<i>root</i> unsatisfiability. The root unsatisfiability aims at providing a more precise amount of errors, since many of the 
+unsatisfiabilities  may be derived (i.e., a subclass of an unsatisfiable class will also be reported as unsatisfiable). 
+The provided approximation is based on LogMap's (incomplete) repair facility and shows the number of classes that this facility needed 
+to repair in order to solve (most of) the unsatisfiabilities [2].
+</p>
+
+<p>
+Precision, recall and F-measure have been computed with respect to
+the available <a href="../../largebio/oaei2012_umls_reference.html">UMLS based alignments</a>. 
+Systems have been ordered in terms of the average F-measure.
+</p>
+
+<p>
+Note that GOMMA has also been evaluated with a configuration that exploits specialised background knowledge (GOMMA-bk). 
+The background knowledge of GOMMA-bk involves the application of mapping composition techniques and the reuse of mappings 
+from FMA-UMLS and NCI-UMLS.
+<!--ServOMap, ServOMapL,--> 
+LogMap, MaasMatch and YAM++ also use different kinds of background knowledge. 
+<!--ServOMap and ServOMapL exploits (simple) synonyms based on the UMLS Metathesaurus.-->
+LogMap uses normalisations and spelling variants from the <a href="http://www.nlm.nih.gov/pubs/factsheets/umlslex.html">UMLS Lexicon</a>. 
+YAM++ and MaasMatch use the general purpose background knowledge provided by 
+<a href="http://wordnet.princeton.edu/">WordNet</a>. 
+</p>
+<!--
+Although, the reference alignment of this 
+track is based on the UMLS-Metathesaurus, we consider the alignments provided by GOMMA-bk very interesting.
+-->
+
+<p>
+LogMap has also been evaluated with two configurations. LogMap's default algorithm computes an estimation of the overlapping between the input ontologies 
+before the matching process, while LogMap-noe has this feature deactivated.
+</p>
+
+
+<p>
+The error-free "Large BioMed 2012 silver standard" reference alignment computed by "harmonising" the output of the participating 
+matching systems will be available soon. We will also perform a debugging of all mapping outputs 
+using Alcomo [3] and LogMap's repair facility [2].
+</p>
+
+<h2>Results OAEI 2012 FMA-NCI matching problem</h2>
+
+<h3>FMA-NCI small fragments</h3>
+
+<p>
+This year we obtained very high level participation and 11 systems/configurations obtained, on average, an F-measure over 0.80 for 
+the matching problem involving the small fragments of FMA and NCI. GOMMA-bk obtained the best results in terms of both recall 
+and F-measure while ServOMap provided the most precise alignments. LogMap and LogMap-noe provided the same results 
+since the input ontologies are already small fragments of FMA and NCI and thus, the overlapping estimation performed by LogMap 
+did not have any impact.
+In general, as expected, precision increases when comparing against the original UMLS mapping set, while recall decreases.
+</p>
+
+<p>
+Our baseline provided very good results in terms of F-measure and outperformed 8 of the participating systems. 
+MaasMatch and Hertuda provided competitive results in terms of recall, but the low precision damaged the final F-measure.
+MapSSS and AUTOMSv2 provided a set of mappings with high precision, however, the F-measure was damaged due to the low recall of their mappings. 
+</p>
+ 
+
+<p>
+The runtimes were very positive in general and 8 systems completed the task in less than 2 minutes. 
+MapSSS required less than 10 minutes, while Hertuda and HotMatch required around 1 hour. 
+Finally, MaasMatch, AUTOMSv2 and Wmatch needed 8, 17 and 18 hours to complete the task, respectively.
+</p> 
+
+
+<p>
+Regarding mapping coherence, 
+only LogMap (with its two variants) generates an almost clean output. 
+In the table, we can appreciate that 
+even the most precise mappings (ServOMap or YAM++) 
+lead to a huge amount of unsatisfiable classes when reasoning together with the input ontologies; 
+and thus, it proves the importance of using techniques to assess the coherence of the generated alignments. 
+Unfortunately, LogMap and CODI are the unique systems (participating in the OAEI 2012) that have shown to use 
+such techniques. 
+</p>
+
+<p>
+
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+<tr class="odd"><td class="text"> GOMMA-Bk </td> 
+<td>26</td> <td>2,843</td> 
+<td>0.961</td> <td>0.903</td> <td class="bold">0.931</td> 
+<td>0.932</td> <td>0.914</td> <td class="bold">0.923</td> 
+<td>0.914</td> <td>0.922</td> <td class="bold">0.918</td> 
+<td>0.936</td> <td>0.913</td> <td class="bold">0.924</td> 
+<td>6,204</td> 
+<td class="right">60.92&#37</td> <td>193</td> 
+</tr>
+
+<tr class="even"><td class="text"> YAM++ </td> 
+<td>78</td> <td>2,614</td> 
+<td>0.980</td> <td>0.848</td> <td class="bold">0.909</td>
+<td>0.959</td> <td>0.865</td> <td class="bold">0.910</td> 
+<td>0.933</td> <td>0.866</td> <td class="bold">0.898</td> 
+<td>0.958</td> <td>0.859</td> <td class="bold">0.906</td> 
+<td>2,352</td> 
+<td class="right">23.10&#37</td> <td>92</td> 
+</tr>
+
+
+
+
+<tr class="odd"><td class="text"> LogMap/LogMap-noe </td> 
+<td>18</td> <td>2,740</td> 
+<td>0.952</td> <td>0.863</td> <td class="bold">0.905</td> 
+<td>0.934</td> <td>0.883</td> <td class="bold">0.908</td> 
+<td>0.908</td> <td>0.883</td> <td class="bold">0.895</td> 
+<td>0.932</td> <td>0.876</td> <td class="bold">0.903</td> 
+<td>2</td> 
+<td class="right">0,02&#37</td> <td>0 </td> 
+</tr>
+
+
+<tr class="even"><td class="text"> GOMMA </td> 
+<td>26</td> <td>2,626</td> 
+<td>0.973</td> <td>0.845</td> <td class="bold">0.904</td> 
+<td>0.945</td> <td>0.856</td> <td class="bold">0.898</td> 
+<td>0.928</td> <td>0.865</td> <td class="bold">0.896</td> 
+<td>0.949</td> <td>0.855</td> <td class="bold">0.900</td> 
+<td>2,130</td> 
+<td class="right">20.92&#37</td> <td>127</td> 
+</tr>
+
+
+<tr class="odd"><td class="text"> ServOMapL </td> 
+<td>20</td> <td>2,468</td> 
+<td>0.988</td> <td>0.806</td> <td class="bold">0.888</td> 
+<td>0.964</td> <td>0.821</td> <td class="bold">0.887</td> 
+<td>0.936</td> <td>0.819</td> <td class="bold">0.873</td> 
+<td>0.962</td> <td>0.815</td> <td class="bold">0.883</td> 
+<td>5,778</td> 
+<td class="right">56.74&#37</td> <td>79</td> 
+</tr>
+
+
+<tr class="base"><td class="text"> LogMapLt </td> 
+<td>8</td> <td>2,483</td> 
+<td>0.969</td> <td>0.796</td> <td class="bold">0.874</td> 
+<td>0.942</td> <td>0.807</td> <td class="bold">0.869</td> 
+<td>0.924</td> <td>0.814</td> <td class="bold">0.866</td> 
+<td>0.945</td> <td>0.806</td> <td class="bold">0.870</td> 
+<td>2,104</td> 
+<td class="right">20.66&#37</td> <td>116</td> 
+</tr>
+
+
+
+<tr class="odd"><td class="text"> ServOMap  </td> 
+<td>25</td> <td>2,300</td> 
+<td>0.990</td> <td>0.753</td> <td class="bold">0.855</td> 
+<td>0.969</td> <td>0.769</td> <td class="bold">0.857</td> 
+<td>0.949</td> <td>0.774</td> <td class="bold">0.853</td> 
+<td>0.969</td> <td>0.765</td> <td class="bold">0.855</td> 
+<td>5,597</td> 
+<td class="right">54.96&#37</td> <td>50</td> 
+</tr>
+
+
+
+
+<tr class="even"><td class="text"> HotMatch </td> 
+<td>4,271</td> <td>2,280</td> 
+<td>0.971</td> <td>0.732</td> <td class="bold">0.835</td> 
+<td>0.951</td> <td>0.748</td> <td class="bold">0.838</td> 
+<td>0.947</td> <td>0.766</td> <td class="bold">0.847</td> 
+<td>0.957</td> <td>0.749</td> <td class="bold">0.840</td> 
+<td>285</td> 
+<td class="right">2.78&#37</td> <td>65</td> 
+</tr>
+
+
+<tr class="odd"><td class="text"> Wmatch </td> 
+<td>65,399</td> <td>3,178</td> 
+<td>0.811</td> <td>0.852</td> <td class="bold">0.831</td> 
+<td>0.786</td> <td>0.862</td> <td class="bold">0.823</td> 
+<td>0.767</td> <td>0.864</td> <td class="bold">0.813</td> 
+<td>0.788</td> <td>0.860</td> <td class="bold">0.822</td> 
+<td>3,168</td> 
+<td class="right">31.11&#37</td> <td>482</td> 
+</tr>
+
+
+
+
+
+<tr class="even"><td class="text"> AROMA </td> 
+<td>63</td> <td>2,571</td> 
+<td>0.876</td> <td>0.745</td> <td class="bold">0.805</td> 
+<td>0.854</td> <td>0.758</td> <td class="bold">0.803</td> 
+<td>0.837</td> <td>0.764</td> <td class="bold">0.799</td> 
+<td>0.856</td> <td>0.756</td> <td class="bold">0.803</td> 
+<td>7,196</td> 
+<td class="right">70.66&#37</td> <td>421</td> 
+</tr>
+
+
+
+
+<tr class="odd"><td class="text"> Hertuda </td> 
+<td>3,327</td> <td>4,309</td> 
+<td>0.598</td> <td>0.852</td> <td class="bold">0.703</td> 
+<td>0.578</td> <td>0.860</td> <td class="bold">0.691</td> 
+<td>0.564</td> <td>0.862</td> <td class="bold">0.682</td> 
+<td>0.580</td> <td>0.858</td> <td class="bold">0.692</td> 
+<td>2,675</td> 
+<td class="right">26.27&#37</td> <td>277</td> 
+</tr>
+
+
+<tr class="even"><td class="text"> MaasMatch </td> 
+<td>27,157</td> <td>3,696</td> 
+<td>0.622</td> <td>0.765</td> <td class="bold">0.686</td> 
+<td>0.606</td> <td>0.778</td> <td class="bold">0.681</td> 
+<td>0.597</td> <td>0.788</td> <td class="bold">0.679</td> 
+<td>0.608</td> <td>0.777</td> <td class="bold">0.682</td> 
+<td>9,598</td> 
+<td class="right">94.25&#37</td> <td>3,113</td> 
+</tr>
+
+
+<tr class="odd"><td class="text"> AUTOMSv2 </td> 
+<td>62,407</td> <td>1,809</td> 
+<td>0.821</td> <td>0.491</td> <td class="bold">0.615</td> 
+<td>0.802</td> <td>0.501</td> <td class="bold">0.617</td> 
+<td>0.709</td> <td>0.507</td> <td class="bold">0.618</td> 
+<td>0.804</td> <td>0.500</td> <td class="bold">0.616</td> 
+<td>5,346</td>
+<td class="right">52.49&#37</td> <td>392</td> 
+</tr>
+
+
+<tr class="even"><td class="text"> MapSSS </td> 
+<td>561</td> <td>1,483</td> 
+<td>0.860</td> <td>0.422</td> <td class="bold">0.566</td> 
+<td>0.840</td> <td>0.430</td> <td class="bold">0.568</td> 
+<td>0.829</td> <td>0.436</td> <td class="bold">0.571</td> 
+<td>0.843</td> <td>0.429</td> <td class="bold">0.569</td> 
+<td>565</td>
+<td class="right">5.55&#37</td> <td>94</td> 
+</tr>
+
+
+</table>
+</center>
+
+</p>
+
+<h3>FMA-NCI big fragments</h3>
+
+<p>
+AUTOMSv2, HotMatch, Hertuda, Wmatch and MaasMatch failed to complete the task involving the big fragments of FMA and NCI 
+after more than 24 hours of execution. Runtimes were in line with the small matching task, apart from the ones for 
+MapSSS and AROMA which suffered an important increase.
+</p>
+
+<p>
+YAM++ provided the best results in terms of F-measure, whereas GOMMA-bk and ServOMap got the best recall and precision, respectively.
+F-measures have decreased considerably with respect to the small matching task. 
+This is mostly due to the fact that this matching task involves more possible candidate mappings than the previous one.
+Nevertheless, seven systems outperformed our baseline and provided high quality mapping sets in terms of both precision and recall.
+Only, MapSSS and AROMA provided worse results in terms of both precision and recall than LogMapLt.
+</p>
+
+
+<p>
+Regarding mapping coherence, as in the previous task, 
+only LogMap (with its two variants) generates an almost clean output where the mappings together with the input ontologies
+only lead to 5 unsatisfiable classes.
+</p>
+
+<p>
+
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>245</td> <td> 2,688 </td> 
+<td>0.923</td> <td>0.821</td> <td class="bold">0.869</td> 
+<td>0.904</td> <td>0.838</td> <td class="bold">0.870</td> 
+<td>0.878</td> <td>0.838</td> <td class="bold">0.857</td> 
+<td>0.902</td> <td>0.832</td> <td class="bold">0.866</td> 
+<td>22,402</td> <td class="right">35.49&#37</td> <td>102
+</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+ServOMapL</td> <td>95</td>  <td> 2,640 </td> 
+<td>0.914</td> <td>0.798</td> <td class="bold">0.852</td> 
+<td>0.892</td> <td>0.812</td> <td class="bold">0.850</td> 
+<td>0.866</td> <td>0.811</td> <td class="bold">0.838</td> 
+<td>0.891</td> <td>0.807</td> <td class="bold">0.847</td> 
+<td>22,315</td> <td class="right">35.41&#37</td> <td>143</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+GOMMA</td> <td>69</td>  <td> 2,810 </td> 
+<td>0.876</td> <td>0.814</td> <td class="bold">0.844</td> 
+<td>0.856</td> <td>0.830</td> <td class="bold">0.843</td> 
+<td>0.840</td> <td>0.837</td> <td class="bold">0.838</td> 
+<td>0.857</td> <td>0.827</td> <td class="bold">0.842</td> 
+<td>2,398</td> <td class="right">4.40&#37</td> <td>116</td> 
+</tr>
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>83</td>  <td> 3,116 </td> 
+<td>0.832</td> <td>0.857</td> <td class="bold">0.844</td> 
+<td>0.814</td> <td>0.875</td> <td class="bold">0.843</td> 
+<td>0.796</td> <td>0.880</td> <td class="bold">0.836</td> 
+<td>0.814</td> <td>0.871</td> <td class="bold">0.841</td> 
+<td>4,609</td> <td class="right">8.46&#37</td> <td>146</td> 
+</tr>
+
+
+<tr class="odd">
+<td class="text">LogMap-noe</td> 
+<td>74</td>  <td> 2,663 </td> 
+<td>0.888</td> <td>0.782</td> <td class="bold">0.832</td> 
+<td>0.881</td> <td>0.809</td> <td class="bold">0.843</td> 
+<td>0.848</td> <td>0.801</td> <td class="bold">0.824</td> 
+<td>0.872</td> <td>0.798</td> <td class="bold">0.833</td> 
+<td>5</td> <td class="right">0.01&#37</td> <td>0 </td> 
+</tr>
+
+
+
+<tr class="even">
+<td class="text">LogMap</td> 
+<td>77</td>  <td> 2,656 </td> 
+<td>0.887</td> <td>0.779</td> <td class="bold">0.829</td> 
+<td>0.877</td> <td>0.803</td> <td class="bold">0.838</td> 
+<td>0.846</td> <td>0.797</td> <td class="bold">0.821</td> 
+<td>0.870</td> <td>0.793</td> <td class="bold">0.830</td> 
+<td>5</td> <td class="right">0.01&#37</td> <td>0 </td> 
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+ServOMap</td> <td>98</td>  <td> 2,413 </td> 
+<td>0.933</td> <td>0.744</td> <td class="bold">0.828</td> 
+<td>0.913</td> <td>0.760</td> <td class="bold">0.829</td> 
+<td>0.894</td> <td>0.766</td> <td class="bold">0.825</td> 
+<td>0.913</td> <td>0.757</td> <td class="bold">0.828</td>  
+<td>21,688</td> <td class="right">34.03&#37</td> <td>86</td> 
+</tr>
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>29</td>  <td> 3,219 </td> 
+<td>0.748</td> <td>0.796</td> <td class="bold">0.771</td>
+<td>0.726</td> <td>0.807</td> <td class="bold">0.764</td> 
+<td>0.713</td> <td>0.814</td> <td class="bold">0.760</td> 
+<td>0.729</td> <td>0.806</td> <td class="bold">0.766</td>  
+<td>12,682</td> <td class="right">23.29&#37</td> <td>443</td> 
+</tr>
+
+
+
+
+
+<tr class="odd"><td class="text">
+AROMA</td> <td>7,538</td> <td> 3,856 </td>  
+<td>0.541</td> <td>0.689</td> <td class="bold">0.606</td> 
+<td>0.526</td> <td>0.700</td> <td class="bold">0.601</td> 
+<td>0.514</td> <td>0.703</td> <td class="bold">0.594</td> 
+<td>0.527</td> <td>0.698</td> <td class="bold">0.600</td> 
+<td>20,054</td> <td class="right">24.07&#37</td> <td>1600
+</td> 
+</tr>
+
+
+
+<tr class="even"><td class="text">
+MapSSS</td> <td>30,575</td>  <td> 2,584 </td> 
+<td>0.392</td> <td>0.335</td> <td class="bold">0.362</td> 
+<td>0.384</td> <td>0.342</td> <td class="bold">0.362</td> 
+<td>0.377</td> <td>0.345</td> <td class="bold">0.360</td> 
+<td>0.384</td> <td>0.341</td> <td class="bold">0.361</td> 
+<td>21,893</td> <td class="right">40.21&#37</td> <td>358</td> 
+</tr>
+
+<tr class="red"><td class="text"> HotMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+<tr class="red"><td class="text"> Wmatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+<tr class="red"><td class="text"> Hertuda </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> MaasMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> AUTOMSv2 </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+
+</table>
+</center>
+
+
+</p>
+
+
+<h3>FMA-NCI whole ontologies</h3>
+
+<p>
+AROMA and MapSSS failed to complete the matching task involving the whole FMA and NCI ontologies
+in less than 24 hours.
+</p>
+
+<p>
+As in the previous task, the remaining 7 matching systems generated high quality mapping sets.
+YAM++ provided the best results in terms of F-measure, 
+whereas GOMMA-bk and ServOMap got the best recall and precision, respectively. LogMap with its two configurations 
+provided an almost clean output and only 9 classes where unsatisfiable after reasoning with the input ontologies 
+and the computed mappings.
+</p>
+
+<p>
+Runtimes were also very positive.
+YAM++ was slightly slower than the other systems, which gave the outputs in less than 5 minutes, 
+and required around 20 minutes to complete the task. 
+</p>
+
+<p>
+
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>1,304</td> <td> 2,738 </td> 
+<td>0.907</td> <td>0.821</td> <td class="bold">0.862</td> 
+<td>0.887</td> <td>0.838</td> <td class="bold">0.862</td> 
+<td>0.862</td> <td>0.838</td> <td class="bold">0.850</td> 
+<td>0.885</td> <td>0.832</td> <td class="bold">0.858</td> 
+<td>50,550</td> <td class="right">28.56&#37</td> <td>141</td> 
+</tr>
+
+<tr class="even"><td class="text">
+GOMMA</td> <td>217</td> <td> 2,843 </td> 
+<td>0.865</td> <td>0.813</td> <td class="bold">0.839</td> 
+<td>0.846</td> <td>0.830</td> <td class="bold">0.837</td> 
+<td>0.829</td> <td>0.836</td> <td class="bold">0.833</td> 
+<td>0.847</td> <td>0.826</td> <td class="bold">0.836</td>  
+<td>5,574</td> <td class="right">3.83&#37</td> <td>139</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+ServOMapL</td> <td>251</td> <td> 2,700 </td> 
+<td>0.891</td> <td>0.796</td> <td class="bold">0.841</td> 
+<td>0.869</td> <td>0.810</td> <td class="bold">0.839</td> 
+<td>0.844</td> <td>0.808</td> <td class="bold">0.826</td> 
+<td>0.868</td> <td>0.805</td> <td class="bold">0.835</td> 
+<td>50,334</td> <td class="right">28.48&#37</td> <td>164</td> 
+</tr>
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>231</td> <td> 3,165 </td> 
+<td>0.818</td> <td>0.856</td> <td class="bold">0.837</td> 
+<td>0.800</td> <td>0.874</td> <td class="bold">0.836</td> 
+<td>0.783</td> <td>0.879</td> <td class="bold">0.828</td> 
+<td>0.801</td> <td>0.870</td> <td class="bold">0.834</td> 
+<td>12,939</td> <td class="right">8.88&#37</td> <td>245</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+LogMap-noe</td> <td>206</td> <td>2,646</td> 
+<td>0.882</td> <td>0.771</td> <td class="bold">0.823</td> 
+<td>0.875</td> <td>0.799</td> <td class="bold">0.835</td> 
+<td>0.842</td> <td>0.790</td> <td class="bold">0.815</td> 
+<td>0.866</td> <td>0.787</td> <td class="bold">0.825</td>  
+<td>9</td> <td class="right">0.01&#37</td> <td>0</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+LogMap</td> <td>131</td> <td>2,652</td> 
+<td>0.875</td> <td>0.768</td> <td class="bold">0.818</td> 
+<td>0.868</td> <td>0.795</td> <td class="bold">0.830</td> 
+<td>0.836</td> <td>0.786</td> <td class="bold">0.810</td> 
+<td>0.860</td> <td>0.783</td> <td class="bold">0.819</td>  
+<td>9</td> <td class="right">0.01&#37</td> <td>0</td> 
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+ServOMap</td> <td>204</td> <td>2,465</td> 
+<td>0.912</td> <td>0.743</td> <td class="bold">0.819</td> 
+<td>0.892</td> <td>0.759</td> <td class="bold">0.820</td> 
+<td>0.873</td> <td>0.764</td> <td class="bold">0.815</td> 
+<td>0.892</td> <td>0.755</td> <td class="bold">0.818</td> 
+ <td>48,743</td> <td class="right">27.31&#37</td> <td>114</td> 
+</tr>
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>55</td> <td>3,466</td> 
+<td>0.695</td> <td>0.796</td> <td class="bold">0.742</td> 
+<td>0.675</td> <td>0.807</td> <td class="bold">0.735</td> 
+<td>0.662</td> <td>0.814</td> <td class="bold">0.730</td> 
+<td>0.677</td> <td>0.806</td> <td class="bold">0.736</td>  
+<td>26,429</td> <td class="right">8.68&#37</td> <td>778</td> 
+</tr>
+
+
+<tr class="red"><td class="text"> AROMA </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> MapSSS </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+<tr class="red"><td class="text"> HotMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+<tr class="red"><td class="text"> Wmatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+<tr class="red"><td class="text"> Hertuda </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> MaasMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> AUTOMSv2 </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+</table>
+</center>
+</p>
+
+<h2>Results OAEI 2012 FMA-SNOMED matching problem</h2>
+
+<p>
+As it is depicted in the following tables, the FMA-SNOMED matching problem was harder than the FMA-NCI problem both in size and in complexity. 
+Thus, matching systems required more time to complete the task and provided, in general, worse results in terms of F-measure. 
+Furthermore, MaasMatch, Wmatch and AUTOMSv2, which were able to complete the small FMA-NCI task, failed to   
+complete the small FMA-SNOMED task in less than 24 hours.
+</p>
+
+
+<h3>FMA-SNOMED small fragments</h3>
+
+<p>Six systems provided an on average an F-measure greater than 0.75. However, the other 6 systems that 
+completed the task (including our baseline) failed to provide a recall higher than 0.4.
+GOMMA-bk provided the best results in terms of both 
+recall and F-measure, while the baseline LogMapLt provided the best precision closely followed by ServOMapL. 
+GOMMA-bk is a bit ahead with respect the other systems since managed to provide a mapping set with very high recall. 
+The use of background knowledge was key in this matching task. 
+</p>
+
+<p>As in the FMA-NCI matching problem, precision tend to increase when comparing against the original UMLS mapping set, while recall decreases.</p>
+
+
+<p>
+The runtimes were also very positive in general and 8 systems completed the task in less than 6 minutes. 
+MapSSS required almost 1 hour, while Hertuda, HotMatch and AROMA needed 5, 9 and 14 hours to complete the task, respectively.
+</p>
+
+<p>
+LogMap, unlike LogMap-noe, failed to detect and repair two unsatisfiable classes since 
+they were outside the computed ontology fragments (overlapping).
+The rest of the systems, even when providing highly precise mappings like ServOMapL,
+generated mapping sets with a high incoherence degree. 
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+<tr class="odd"><td class="text">
+GOMMA_Bk</td> <td>148</td> <td>8,598</td> 
+<td>0.958</td> <td>0.914</td> <td class="bold">0.935</td> 
+<td>0.860</td> <td>0.912</td> <td class="bold">0.885</td> 
+<td>0.862</td> <td>0.912</td> <td class="bold">0.886</td> 
+<td>0.893</td> <td>0.913</td> <td class="bold">0.903</td> 
+<td>13,685</td> <td class="right">58.06&#37</td> <td>4,674</td> 
+</tr>
+
+<tr class="even"><td class="text">
+ServOMapL</td> <td>39</td> <td>6,346</td> 
+<td>0.985</td> <td>0.694</td> <td class="bold">0.814</td> 
+<td>0.884</td> <td>0.691</td> <td class="bold">0.776</td> 
+<td>0.892</td> <td>0.696</td> <td class="bold">0.782</td> 
+<td>0.920</td> <td>0.694</td> <td class="bold">0.791</td> 
+<td>10,584</td> <td class="right">44.91&#37</td> <td>3,056</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>326</td> <td>6,421</td> 
+<td>0.972</td> <td>0.693</td> <td class="bold">0.809</td> 
+<td>0.870</td> <td>0.688</td> <td class="bold">0.769</td> 
+<td>0.879</td> <td>0.694</td> <td class="bold">0.776</td> 
+<td>0.907</td> <td>0.692</td> <td class="bold">0.785</td> 
+<td>14,534</td> <td class="right">61.67&#37</td> <td>3,150</td> 
+</tr>
+
+
+
+<tr class="even"><td class="text">
+LogMap-noe</td> <td>63</td> <td>6,363</td> 
+<td>0.964</td> <td>0.681</td> <td class="bold">0.799</td> 
+<td>0.877</td> <td>0.688</td> <td class="bold">0.771</td> 
+<td>0.889</td> <td>0.696</td> <td class="bold">0.781</td> 
+<td>0.910</td> <td>0.688</td> <td class="bold">0.784</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+LogMap</td> <td>65</td> <td>6,164</td> 
+<td>0.965</td> <td>0.660</td> <td class="bold">0.784</td> 
+<td>0.876</td> <td>0.666</td> <td class="bold">0.756</td> 
+<td>0.889</td> <td>0.674</td> <td class="bold">0.767</td> 
+<td>0.910</td> <td>0.667</td> <td class="bold">0.769</td> 
+<td>2</td> <td class="right">0.01&#37</td> <td>2</td> 
+</tr>
+
+
+
+
+<tr class="even"><td class="text">
+ServOMap</td> <td>46</td> <td>6,008</td> 
+<td>0.985</td> <td>0.657</td> <td class="bold">0.788</td> 
+<td>0.880</td> <td>0.652</td> <td class="bold">0.749</td> 
+<td>0.888</td> <td>0.656</td> <td class="bold">0.755</td> 
+<td>0.918</td> <td>0.655</td> <td class="bold">0.764</td> 
+<td>8,165</td> <td class="right">34.64&#37</td> <td>2,721</td> 
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+GOMMA</td> <td>54</td> <td>3,667</td> 
+<td>0.926</td> <td>0.377</td> <td class="bold">0.536</td> 
+<td>0.834</td> <td>0.377</td> <td class="bold">0.520</td> 
+<td>0.865</td> <td>0.390</td> <td class="bold">0.538</td> 
+<td>0.875</td> <td>0.381</td> <td class="bold">0.531</td> 
+<td>2,058</td> <td class="right">8.73&#37</td> <td>206</td> 
+</tr>
+
+
+
+
+
+<tr class="even"><td class="text">
+MapSSS</td> <td>3,129</td> <td>3,458</td> 
+<td>0.798</td> <td>0.306</td> <td class="bold">0.442</td> 
+<td>0.719</td> <td>0.307</td> <td class="bold">0.430</td> 
+<td>0.737</td> <td>0.313</td> <td class="bold">0.440</td> 
+<td>0.751</td> <td>0.309</td> <td class="bold">0.438</td> 
+<td>9,084</td> <td class="right">38.54&#37</td> <td>389</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+AROMA</td> <td>51,191</td> <td>5,227</td> 
+<td>0.555</td> <td>0.322</td> <td class="bold">0.407</td> 
+<td>0.507</td> <td>0.327</td> <td class="bold">0.397</td> 
+<td>0.519</td> <td>0.333</td> <td class="bold">0.406</td> 
+<td>0.527</td> <td>0.327</td> <td class="bold">0.404</td> 
+<td>21,083</td> <td class="right">89.45&#37</td> <td>2,296</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+HotMatch</td> <td>31,718</td> <td>2,139</td> 
+<td>0.875</td> <td>0.208</td> <td class="bold">0.336</td> 
+<td>0.812</td> <td>0.214</td> <td class="bold">0.339</td> 
+<td>0.842</td> <td>0.222</td> <td class="bold">0.351</td> 
+<td>0.843</td> <td>0.214</td> <td class="bold">0.342</td> 
+<td>907</td> <td class="right">3.85&#37</td> <td>104</td> 
+</tr>
+
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>14</td> <td>1,645</td> 
+<td>0.975</td> <td>0.178</td> <td class="bold">0.301</td> 
+<td>0.902</td> <td>0.183</td> <td class="bold">0.304</td> 
+<td>0.936</td> <td>0.189</td> <td class="bold">0.315</td> 
+<td>0.938</td> <td>0.183</td> <td class="bold">0.307</td> 
+<td>773</td> <td class="right">3.28&#37</td> <td>21</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+Hertuda</td> <td>17,625</td> <td>3,051</td> 
+<td>0.578</td> <td>0.196</td> <td class="bold">0.292</td> 
+<td>0.533</td> <td>0.201</td> <td class="bold">0.292</td> 
+<td>0.555</td> <td>0.208</td> <td class="bold">0.303</td> 
+<td>0.555</td> <td>0.201</td> <td class="bold">0.296</td> 
+<td>1,020</td> <td class="right">4.33&#37</td> <td>47</td> 
+</tr>
+
+
+
+</table>
+</center>
+</p>
+
+<h3>FMA-SNOMED big fragments</h3>
+
+
+<p>
+MapSSS, HotMatch and Hertuda failed to complete the task involving the big fragments of FMA and SNOMED 
+after more than 24 hours of execution.
+</p>
+
+
+<p>
+ServOMapL provided the best results in terms of F-measure and precision, whereas GOMMA-bk got the best recall.
+As in the FMA-NCI matching task involving big fragments, the F-measures suffered, in general, a decrease with respect to the small matching task.
+The most important variations were suffered by GOMMA-bk and GOMMA where their average precision decreased from 0.893 and 0.875 to 0.571 and 0.389, respectively.
+This is an interesting fact, since the background knowledge used by GOMMA-bk could not avoid the decrease in precision while keeping a high recall.
+Furthermore, runtimes were from 4 to 10 times higher for all the systems, with the exception of AROMA's runtime that increased from 14 to 17 hours. 
+</p>
+
+<p>
+LogMap (with its two variants) generated a clean output where the mappings together with the input ontologies
+did not lead to any unsatisfiable class.
+</p>
+
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+ServOMapL</td> <td>234</td> <td>6,563</td> 
+<td>0.945</td> <td>0.689</td> <td class="bold">0.797</td> 
+<td>0.847</td> <td>0.686</td> <td class="bold">0.758</td> 
+<td>0.857</td> <td>0.692</td> <td class="bold">0.766</td> 
+<td>0.883</td> <td>0.689</td> <td class="bold">0.774</td> 
+<td>55,970</td> <td class="right">32.36&#37</td> <td>1,192</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+ServOMap</td> <td>315</td> <td>6,272</td> 
+<td>0.941</td> <td>0.655</td> <td class="bold">0.773</td> 
+<td>0.841</td> <td>0.650</td> <td class="bold">0.734</td> 
+<td>0.849</td> <td>0.655</td> <td class="bold">0.740</td> 
+<td>0.877</td> <td>0.654</td> <td class="bold">0.749</td> 
+<td>143,316</td> <td class="right">82.85&#37</td> <td>1,320</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>3,780</td> <td>7,003</td> 
+<td>0.879</td> <td>0.684</td> <td class="bold">0.769</td> 
+<td>0.787</td> <td>0.679</td> <td class="bold">0.729</td> 
+<td>0.797</td> <td>0.686</td> <td class="bold">0.737</td> 
+<td>0.821</td> <td>0.683</td> <td class="bold">0.746</td> 
+<td>69,345</td> <td class="right">40.09&#37</td> <td>1,360</td> 
+</tr>
+
+
+
+<tr class="even"><td class="text">
+LogMap-noe</td> <td>521</td> <td>6,450</td> 
+<td>0.886</td> <td>0.635</td> <td class="bold">0.740</td> 
+<td>0.805</td> <td>0.640</td> <td class="bold">0.713</td> 
+<td>0.821</td> <td>0.651</td> <td class="bold">0.726</td> 
+<td>0.837</td> <td>0.642</td> <td class="bold">0.727</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+LogMap</td> <td>484</td> <td>6,292</td> 
+<td>0.883</td> <td>0.617</td> <td class="bold">0.726</td> 
+<td>0.800</td> <td>0.621</td> <td class="bold">0.699</td> 
+<td>0.815</td> <td>0.631</td> <td class="bold">0.711</td> 
+<td>0.833</td> <td>0.623</td> <td class="bold">0.712</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>636</td> <td>12,614</td> 
+<td>0.613</td> <td>0.858</td> <td class="bold">0.715</td> 
+<td>0.548</td> <td>0.852</td> <td class="bold">0.667</td> 
+<td>0.551</td> <td>0.855</td> <td class="bold">0.670</td> 
+<td>0.571</td> <td>0.855</td> <td class="bold">0.684</td> 
+<td>75,910</td> <td class="right">43.88&#37</td> <td>3,344</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+GOMMA</td> <td>437</td> <td>5,591</td> 
+<td>0.412</td> <td>0.256</td> <td class="bold">0.316</td> 
+<td>0.370</td> <td>0.255</td> <td class="bold">0.302</td> 
+<td>0.386</td> <td>0.265</td> <td class="bold">0.314</td> 
+<td>0.389</td> <td>0.259</td> <td class="bold">0.311</td> 
+<td>7,343</td> <td class="right">4.25&#37</td> <td>480</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+AROMA</td> <td>62,801</td> <td>2,497</td> 
+<td>0.684</td> <td>0.190</td> <td class="bold">0.297</td> 
+<td>0.638</td> <td>0.197</td> <td class="bold">0.300</td> 
+<td>0.660</td> <td>0.203</td> <td class="bold">0.310</td> 
+<td>0.661</td> <td>0.196</td> <td class="bold">0.303</td> 
+<td>54,459</td> <td class="right">31.48&#37</td> <td>271</td> 
+</tr>
+
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>96</td> <td>1,819</td> 
+<td>0.882</td> <td>0.178</td> <td class="bold">0.296</td> 
+<td>0.816</td> <td>0.183</td> <td class="bold">0.299</td> 
+<td>0.846</td> <td>0.189</td> <td class="bold">0.309</td> 
+<td>0.848</td> <td>0.183</td> <td class="bold">0.302</td> 
+<td>2,994</td> <td class="right">1.73&#37</td> <td>24</td> 
+</tr>
+
+
+<tr class="red"><td class="text"> MapSSS </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+<tr class="red"><td class="text"> HotMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> Hertuda </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+
+
+
+</table>
+</center>
+</p>
+
+<h3>FMA-SNOMED whole ontologies</h3>
+
+<p>
+AROMA failed to complete the matching task involving the whole FMA and SNOMED ontologies
+in less than 24 hours.
+</p>
+
+
+<p>The results in terms of both precision and recall did not suffer important changes and, as in the previous task, 
+ServOMapL provided the best results in terms of F-measure and precision while GOMMA-bk got the best recall.
+</p>
+
+<p>Runtimes for ServOMap, ServOMapL LogMapLt and LogMap (with its two variations) were in line with the previous matching task; the 
+computation times for 
+GOMMA, GOMMA-bk and YAM++, however, suffered and important increase. GOMMA (with its two variations) required more than 30 minutes, while YAM++
+required more than 6 hours.   
+</p>
+
+<p>
+LogMap and LogMap-noe mappings, as in previous tasks, had a very low incoherence degree.
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Refined UMLS (Alcomo) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+
+
+
+<tr class="odd"><td class="text">
+ServOMapL</td> <td>517</td> <td>6,605</td> 
+<td>0.939</td> <td>0.688</td> <td class="bold">0.794</td> 
+<td>0.842</td> <td>0.686</td> <td class="bold">0.756</td> 
+<td>0.851</td> <td>0.691</td> <td class="bold">0.763</td> 
+<td>0.877</td> <td>0.688</td> <td class="bold">0.772</td> 
+<td>99,726</td> <td class="right">25.86&#37</td> <td>2,862</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+ServOMap</td> <td>532</td> <td>6,320</td> 
+<td>0.933</td> <td>0.655</td> <td class="bold">0.770</td> 
+<td>0.835</td> <td>0.650</td> <td class="bold">0.731</td> 
+<td>0.842</td> <td>0.655</td> <td class="bold">0.737</td> 
+<td>0.870</td> <td>0.653</td> <td class="bold">0.746</td> 
+<td>273,242</td> <td class="right">70.87&#37</td> <td>2,617</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>23,900</td> <td>7,044</td> 
+<td>0.872</td> <td>0.682</td> <td class="bold">0.765</td> 
+<td>0.780</td> <td>0.678</td> <td class="bold">0.725</td> 
+<td>0.791</td> <td>0.685</td> <td class="bold">0.734</td> 
+<td>0.814</td> <td>0.681</td> <td class="bold">0.742</td> 
+<td>106,107</td> <td class="right">27.52&#37</td> <td>3,393</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+LogMap</td> <td>612</td> <td>6,312</td> 
+<td>0.877</td> <td>0.615</td> <td class="bold">0.723</td> 
+<td>0.795</td> <td>0.619</td> <td class="bold">0.696</td> 
+<td>0.811</td> <td>0.629</td> <td class="bold">0.708</td> 
+<td>0.828</td> <td>0.621</td> <td class="bold">0.710</td> 
+<td>10</td> <td class="right">0.003&#37</td> <td>0</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+LogMap-noe</td> <td>791</td> <td>6,406</td> 
+<td>0.866</td> <td>0.616</td> <td class="bold">0.720</td> 
+<td>0.782</td> <td>0.617</td> <td class="bold">0.690</td> 
+<td>0.801</td> <td>0.631</td> <td class="bold">0.706</td> 
+<td>0.816</td> <td>0.621</td> <td class="bold">0.706</td> 
+<td>10</td> <td class="right">0.003&#37</td> <td>0</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>1,893</td> <td>12,829</td> 
+<td>0.602</td> <td>0.858</td> <td class="bold">0.708</td> 
+<td>0.538</td> <td>0.852</td> <td class="bold">0.660</td> 
+<td>0.542</td> <td>0.855</td> <td class="bold">0.663</td> 
+<td>0.561</td> <td>0.855</td> <td class="bold">0.677</td> 
+<td>119,657</td> <td class="right">31.03&#37</td> <td>5,289</td> 
+</tr>
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>171</td> <td>1,823</td> 
+<td>0.880</td> <td>0.178</td> <td class="bold">0.296</td>
+<td>0.814</td> <td>0.183</td> <td class="bold">0.299</td> 
+<td>0.844</td> <td>0.189</td> <td class="bold">0.309</td> 
+<td>0.846</td> <td>0.183</td> <td class="bold">0.301</td> 
+<td>4,938</td> <td class="right">1.28&#37</td> <td>37</td> 
+</tr>
+
+<tr class="even"><td class="text">
+GOMMA</td> <td>1,994</td> <td>5,823</td> 
+<td>0.370</td> <td>0.239</td> <td class="bold">0.291</td> 
+<td>0.332</td> <td>0.239</td> <td class="bold">0.278</td> 
+<td>0.347</td> <td>0.248</td> <td class="bold">0.289</td> 
+<td>0.350</td> <td>0.242</td> <td class="bold">0.286</td> 
+<td>10,752</td> <td class="right">2.79&#37</td> <td>609</td> 
+</tr>
+
+
+<tr class="red"><td class="text"> AROMA </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+<tr class="red"><td class="text"> MapSSS </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+<tr class="red"><td class="text"> HotMatch </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+<tr class="red"><td class="text"> Hertuda </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+</table>
+</center>
+</p>
+
+<h2>Results OAEI 2012 SNOMED-NCI matching problem</h2>
+
+<p>The matching outputs in the SNOMED-NCI matching problem have only been compared against the original UMLS mapping and the refined subset 
+computed by LogMap's repair facility. We could not compute a refined UMLS alignment set with Alcomo debugging system since, 
+at the time of creating the datasets, it could not cope with the integration of SNOMED and NCI via mappings. The new version of 
+Alcomo, however, has shown to be able to provide such refined set.
+</p>
+
+<p>The satisfiability results, since currently no OWL 2 reasoner has shown to cope with the integration 
+of SNOMED and NCI via mappings <a href="http://ceur-ws.org/Vol-858/ore2012_paper9.pdf">[url]</a>, have been estimated 
+using the Dowling-Gallier algorithm <a href="http://www.sciencedirect.com/science/article/pii/0743106684900141">[url]</a> for 
+propositional Horn satisfiability (implemented in LogMap's repair facility).
+</p>
+
+<h3>SNOMED-NCI small fragments</h3>
+
+
+<p>
+The SNOMED-NCI matching problem moves to a next level of difficulty with respect to the FMA-SNOMED matching problem and, in general,
+runtimes and results are slightly worse. Furthermore, Hertuda and HotMatch, which were able to complete the small FMA-NCI and the small FMA-SNOMED tasks, 
+failed to complete the small SNOMED-NCI task in less than 24 hours.
+</p>
+
+<p>
+Six systems provided an F-measure higher than our baseline LogMapLt and their F-measures were very close to each other. 
+On the other hand, GOMMA, MapSSS and AROMA failed to top LogMapLt results.
+LogMap-noe provided the best results in terms of recall and F-measure while ServOMap generated the most precise mappings. 
+</p>
+
+<p>As in the FMA-NCI and FMA-SNOMED matching problems, precision tend to increase when comparing against the original UMLS mapping set, while recall decreases.</p>
+
+<p>
+The runtimes were also positive in general and 7 systems completed the task in less than 4 minutes. 
+YAM++ required more than 30 minutes, 
+while AROMA and MapSSS needed 4 and 8 hours to complete the task, respectively.
+</p>
+
+<p>
+LogMap (with its two variants) generated a set of output mappings that did not lead to any unsatisfiable class 
+when reasoning (using Dowling-Gallier algorithm) together with the input ontologies.
+The rest of the systems generated mapping sets that lead to a degree of incoherence greater than 50&#37. 
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+<tr class="odd"><td class="text">
+LogMap-noe</td> <td>211</td> <td>13,525</td> 
+<td>0.897</td> <td>0.644</td> <td class="bold">0.750</td> 
+<td>0.893</td> <td>0.659</td> <td class="bold">0.758</td> 
+<td>0.895</td> <td>0.652</td> <td class="bold">0.754</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+LogMap</td> <td>221</td> <td>13,454</td> 
+<td>0.899</td> <td>0.642</td> <td class="bold">0.749</td>
+<td>0.895</td> <td>0.657</td> <td class="bold">0.758</td> 
+<td>0.897</td> <td>0.649</td> <td class="bold">0.753</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+
+
+
+<tr class="odd"><td class="text">
+GOMMA_Bk</td> <td>226</td> <td>12,294</td> 
+<td>0.946</td> <td>0.617</td> <td class="bold">0.747</td> 
+<td>0.931</td> <td>0.625</td> <td class="bold">0.748</td> 
+<td>0.939</td> <td>0.621</td> <td class="bold">0.747</td> 
+<td>48,681</td> <td class="right">64.83&#37</td> <td>863</td> 
+</tr>
+
+<tr class="even"><td class="text">
+YAM++</td> <td>1,901</td> <td>11,961</td> 
+<td>0.951</td> <td>0.604</td> <td class="bold">0.739</td> 
+<td>0.940</td> <td>0.614</td> <td class="bold">0.743</td> 
+<td>0.946</td> <td>0.609</td> <td class="bold">0.741</td> 
+<td>50,089</td> <td class="right">66.71&#37</td> <td>471</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+ServOMapL</td> <td>147</td> <td>11,730</td> 
+<td>0.960</td> <td>0.598</td> <td class="bold">0.737</td> 
+<td>0.947</td> <td>0.606</td> <td class="bold">0.739</td> 
+<td>0.954</td> <td>0.602</td> <td class="bold">0.738</td> 
+<td>62,367</td> <td class="right">83.06&#37</td> <td>657</td> 
+</tr>
+
+<tr class="even"><td class="text">
+ServOMap</td> <td>153</td> <td>10,829</td> 
+<td>0.972</td> <td>0.558</td> <td class="bold">0.709</td> 
+<td>0.959</td> <td>0.567</td> <td class="bold">0.713</td> 
+<td>0.965</td> <td>0.563</td> <td class="bold">0.711</td> 
+<td>51,020</td> <td class="right">67.95&#37</td> <td>467</td> 
+</tr>
+
+
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>54</td> <td>10,947</td> 
+<td>0.953</td> <td>0.554</td> <td class="bold">0.700</td> 
+<td>0.938</td> <td>0.560</td> <td class="bold">0.701</td> 
+<td>0.945</td> <td>0.557</td> <td class="bold">0.701</td> 
+<td>61,269</td> <td class="right">81.60&#37</td> <td>801</td> 
+</tr>
+
+<tr class="even"><td class="text">
+GOMMA</td> <td>197</td> <td>10,555</td> 
+<td>0.948</td> <td>0.531</td> <td class="bold">0.680</td> 
+<td>0.931</td> <td>0.536</td> <td class="bold">0.680</td> 
+<td>0.939</td> <td>0.533</td> <td class="bold">0.680</td> 
+<td>42,813</td> <td class="right">57.02&#37</td> <td>851</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+AROMA</td> <td>15,624</td> <td>11,783</td> 
+<td>0.861</td> <td>0.538</td> <td class="bold">0.662</td> 
+<td>0.848</td> <td>0.545</td> <td class="bold">0.664</td> 
+<td>0.854</td> <td>0.542</td> <td class="bold">0.663</td> 
+<td>70,491</td> <td class="right">93.88&#37</td> <td>1,286</td> 
+</tr>
+
+
+
+<tr class="even"><td class="text">
+MapSSS</td> <td>27,381</td> <td>9,608</td> 
+<td>0.795</td> <td>0.405</td> <td class="bold">0.537</td> 
+<td>0.783</td> <td>0.411</td> <td class="bold">0.539</td> 
+<td>0.789</td> <td>0.408</td> <td class="bold">0.538</td> 
+<td>46,083</td> <td class="right">61.37&#37</td> <td>794</td> 
+</tr>
+
+</table>
+</center>
+</p>
+
+<h3>SNOMED-NCI big fragments</h3>
+
+<p>MapSSS and AROMA failed to complete the task involving the big fragments of FMA and SNOMED after more than 24 hours of execution.</p>
+
+<p>There were not big differences, in general, in terms of F-measure with respect to the small SNOMED-NCI task. 
+Only LogMap decreased their recall and lost its second position and GOMMA-bk generated less precise mappings and  
+was relegated to the sixth position. As in previous task, LogMap-noe provided the best results in terms of recall and F-measure 
+while ServOMap generated the most precise mappings.</p>
+
+<p>Runtimes were between 2 and 3 orders of magnitude bigger than in the small task, but in the most of the cases the task was 
+finished in less than 10 minutes.</p>
+
+<p>Regarding mapping coherence, LogMap-noe provided a clean output while LogMap, since it computes an estimation of the overlapping (fragments) 
+between the input ontologies, failed to detect and repair 3 unsatisfiable classes, which were outside the computed ontology fragments. 
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+LogMap-noe</td> <td>575</td> <td>13,184</td> 
+<td>0.882</td> <td>0.617</td> <td class="bold">0.726</td> 
+<td>0.877</td> <td>0.631</td> <td class="bold">0.734</td> 
+<td>0.879</td> <td>0.624</td> <td class="bold">0.730</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+<tr class="even"><td class="text">
+YAM++</td> <td>6,127</td> <td>13,083</td> 
+<td>0.864</td> <td>0.600</td> <td class="bold">0.708</td> 
+<td>0.854</td> <td>0.610</td> <td class="bold">0.712</td> 
+<td>0.859</td> <td>0.605</td> <td class="bold">0.710</td> 
+<td>104,492</td> <td class="right">60.66&#37</td> <td>618</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+ServOMapL</td> <td>363</td> <td>12,784</td> 
+<td>0.870</td> <td>0.590</td> <td class="bold">0.703</td> 
+<td>0.858</td> <td>0.599</td> <td class="bold">0.705</td> 
+<td>0.864</td> <td>0.594</td> <td class="bold">0.704</td> 
+<td>136,909</td> <td class="right">79.48&#37</td> <td>1,101</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+LogMap</td> <td>514</td> <td>12,142</td> 
+<td>0.877</td> <td>0.565</td> <td class="bold">0.687</td> 
+<td>0.872</td> <td>0.578</td> <td class="bold">0.695</td> 
+<td>0.874</td> <td>0.571</td> <td class="bold">0.691</td>
+<td>3</td> <td class="right">0.002&#37</td> <td>2</td> 
+</tr>
+
+
+<tr class="odd"><td class="text">
+ServOMap</td> <td>282</td> <td>11,632</td> 
+<td>0.896</td> <td>0.553</td> <td class="bold">0.684</td> 
+<td>0.885</td> <td>0.562</td> <td class="bold">0.687</td> 
+<td>0.891</td> <td>0.558</td> <td class="bold">0.686</td> 
+<td>110,253</td> <td class="right">64.00&#37</td> <td>820</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>638</td> <td>15,644</td> 
+<td>0.730</td> <td>0.606</td> <td class="bold">0.662</td> 
+<td>0.718</td> <td>0.613</td> <td class="bold">0.662</td> 
+<td>0.724</td> <td>0.610</td> <td class="bold">0.662</td> 
+<td>116,451</td> <td class="right">67.60&#37</td> <td>2,741</td> 
+</tr>
+
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>104</td> <td>12,741</td> 
+<td>0.819</td> <td>0.553</td> <td class="bold">0.660</td> 
+<td>0.805</td> <td>0.560</td> <td class="bold">0.661</td> 
+<td>0.812</td> <td>0.557</td> <td class="bold">0.661</td> 
+<td>131,073</td> <td class="right">76.09&#37</td> <td>2,201</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA</td> <td>527</td> <td>12,320</td> 
+<td>0.802</td> <td>0.524</td> <td class="bold">0.634</td> 
+<td>0.787</td> <td>0.529</td> <td class="bold">0.633</td> 
+<td>0.795</td> <td>0.527</td> <td class="bold">0.634</td> 
+<td>96,945</td> <td class="right">56.28&#37</td> <td>1,621</td> 
+</tr>
+
+
+<tr class="red"><td class="text"> AROMA </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+<tr class="red"><td class="text"> MapSSS </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+</table>
+</center>
+</p>
+
+<h3>SNOMED-NCI whole ontologies</h3>
+
+<p>The precision and recall slightly decreased in all systems and none of them could reach an F-measure of 0.7. 
+YAM++ produced the best mapping set in terms of F-measure, while ServOMap and GOMMA-bk generated the mappings with 
+best precision and recall, respectively. LogMap-noe lost its first position since it provided less 
+comprehensive mappings.</p>
+
+
+<p>ServOMap, ServOMapL and LogMapwere the fastest tools and required 11, 12 and 16 minutes respectively.
+GOMMA (with its two variations) required more than 30 minutes, while YAM++ required more than 8 hours.   
+</p>
+
+<p>As in previous task, LogMap-noe provided a clean output while LogMap failed to detect and repair a few unsatisfiable classes 
+due to the computation of the overlapping between the input ontologies. 
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+<tr class="header">
+<td  class="header" rowspan="2"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Time (s) </td>
+<td  class="header" rowspan="2" colspan="1"> # Mappings </td> </td>
+<td  class="header" colspan="3"> Original UMLS </td>
+<td  class="header" colspan="3"> Refined UMLS (LogMap) </td>
+<td  class="header" colspan="3"> Average </td> 
+<td  class="header" colspan="3"> Incoherence Analysis</td>
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td> 
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> Precision </td><td  class="header"> &nbsp;Recall&nbsp; </td> <td  class="header"> F-measure </td>
+<td  class="header"> All Unsat.</td> <td  class="header"> Degree </td> <td  class="header"> Root Unsat.</td>
+</tr>
+
+
+
+<tr class="odd"><td class="text">
+YAM++</td> <td>30,155</td> <td>14,103</td> 
+<td>0.794</td> <td>0.594</td> <td class="bold">0.680</td> 
+<td>0.785</td> <td>0.604</td> <td class="bold">0.683</td> 
+<td>0.790</td> <td>0.599</td> <td class="bold">0.681</td> 
+<td>238,593</td> <td class="right">63.91&#37</td> <td>979</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+ServOMapL</td> <td>738</td> <td>13,964</td> 
+<td>0.796</td> <td>0.590</td> <td class="bold">0.678</td> 
+<td>0.785</td> <td>0.598</td> <td class="bold">0.679</td> 
+<td>0.791</td> <td>0.594</td> <td class="bold">0.678</td> 
+<td>286,790</td> <td class="right">76.82&#37</td> <td>1,557</td> 
+</tr>
+
+
+
+
+
+<tr class="odd"><td class="text">
+LogMap</td> <td>955</td> <td>13,011</td> 
+<td>0.816</td> <td>0.564</td> <td class="bold">0.667</td> 
+<td>0.812</td> <td>0.577</td> <td class="bold">0.674</td> 
+<td>0.814</td> <td>0.570</td> <td class="bold">0.671</td> 
+<td>16</td> <td class="right">0.004&#37</td> <td>10</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+LogMap-noe</td> <td>1,505</td> <td>13,058</td> 
+<td>0.813</td> <td>0.563</td> <td class="bold">0.666</td> 
+<td>0.809</td> <td>0.577</td> <td class="bold">0.673</td> 
+<td>0.811</td> <td>0.570</td> <td class="bold">0.670</td> 
+<td>0</td> <td class="right">0&#37</td> <td>0</td> 
+</tr>
+
+<tr class="odd"><td class="text">
+ServOMap</td> <td>654</td> <td>12,462</td> 
+<td>0.835</td> <td>0.552</td> <td class="bold">0.664</td> 
+<td>0.824</td> <td>0.560</td> <td class="bold">0.667</td> 
+<td>0.829</td> <td>0.556</td> <td class="bold">0.666</td> 
+<td>230,055</td> <td class="right">61.63&#37</td> <td>1,546</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA_Bk</td> <td>1,940</td> <td>17,045</td> 
+<td>0.669</td> <td>0.605</td> <td class="bold">0.635</td> 
+<td>0.658</td> <td>0.612</td> <td class="bold">0.634</td> 
+<td>0.663</td> <td>0.608</td> <td class="bold">0.635</td> 
+<td>239,708</td> <td class="right">64.21&#37</td> <td>4,297</td> 
+</tr>
+
+
+<tr class="base"><td class="text">
+LogMapLt</td> <td>178</td> <td>14,043</td> 
+<td>0.743</td> <td>0.553</td> <td class="bold">0.634</td> 
+<td>0.731</td> <td>0.560</td> <td class="bold">0.634</td> 
+<td>0.737</td> <td>0.557</td> <td class="bold">0.634</td> 
+<td>305,648</td> <td class="right">81.87&#37</td> <td>3,160</td> 
+</tr>
+
+
+<tr class="even"><td class="text">
+GOMMA</td> <td>1,820</td> <td>13,693</td> 
+<td>0.720</td> <td>0.523</td> <td class="bold">0.606</td> 
+<td>0.707</td> <td>0.528</td> <td class="bold">0.605</td> 
+<td>0.714</td> <td>0.526</td> <td class="bold">0.606</td> 
+<td>215,959</td> <td class="right">57.85&#37</td> <td>2,614</td> 
+</tr>
+
+
+<tr class="red"><td class="text"> AROMA </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+
+<tr class="red"><td class="text"> MapSSS </td> 
+	<td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td>
+	<td> - </td> <td> - </td> <td> - </td> 
+</tr>
+
+</table>
+</center>
+</p>
+
+<h2>Result summaryk (Top 8 systems)</h2>
+
+<p>
+The following table summarises the results for the 8 systems that completed all 9 tasks in the Large BioMed Track. The table shows
+the average precision, recall, F-measure and incoherence degree; and the total time to complete the tasks.
+</p>
+
+<p>
+The systems have been ordered according to the average F-measure. 
+YAM++ obtained the best average F-measure, 
+GOMMA-Bk the best recall and ServOMap computed the most precise mappings.
+The first 6 systems obtained very close results in terms of F-measure and there were only a gap of 0.024 between 
+the first (YAM++) and the sixth (ServOMap).
+</p>
+
+<p>
+Regarding mapping incoherence, 
+LogMap and LogMap-noe were the unique systems providing mapping sets leading to a small number of 
+unsatisfiable classes. 
+</p>
+
+<p>
+Finally, LogMapLt, since it implements basic and efficient string similarity techniques, 
+was the fastest system. The rest of the tools, apart from YAM++, were also very fast and only needed between 38 and 97 minutes 
+to complete the tasks. YAM++ was the counterexample and required almost 19 hours to complete the nine tasks.
+</p>
+
+<p>
+<center>
+<table cellpadding="4" cellspacing="0">
+
+
+<tr class="header">
+<td  class="header" rowspan="2" colspan="1"> System </td>
+<td  class="header" rowspan="2" colspan="1"> Total Time (s) </td>
+<td  class="header" colspan="4"> Average </td> 
+</tr>
+
+
+<tr class="header">
+<td  class="header"> Precision </td>
+<td  class="header"> &nbsp;Recall&nbsp; </td> 
+<td  class="header"> F-measure </td>
+<td class="header"> Incoherence</td>
+</tr>
+
+
+<tr class="odd"><td class="text"> YAM++ </td> 
+<td>67,817</td>  
+<td>0.876</td> <td>0.710</td> <td class="bold">0.782</td>
+<td class="right">45.30&#37</td>  
+</tr>
+
+<tr class="even"><td class="text"> ServOMapL </td> 
+<td> 2,405 </td>  
+<td>0.890</td> <td>0.699</td> <td>0.780</td>
+<td class="right">51.46&#37</td>  
+</tr>
+
+
+<tr class="odd"><td class="text"> LogMap-noe </td> 
+<td> 3,964 </td>  
+<td>0.869</td> <td>0.695</td> <td>0.770</td>
+<td class="bright">0.004&#37</td>  
+</tr>
+
+
+<tr class="even"><td class="text"> GOMMA_Bk </td> 
+<td> 5,821 </td>  
+<td>0.767</td> <td class="bold">0.791</td> <td>0.768</td>
+<td class="right">45.32&#37</td>  
+</tr>
+
+
+<tr class="odd"><td class="text"> LogMap </td> 
+<td> 3,077 </td>  
+<td>0.869</td> <td>0.684</td> <td>0.762</td>
+<td class="bright">0.006&#37</td>  
+</tr>
+
+
+<tr class="even"><td class="text"> ServOMap </td> 
+<td> 2,310 </td>  
+<td class="bold" >0.903</td> <td>0.657</td> <td>0.758</td>
+<td class="right">55.36&#37</td>  
+</tr>
+
+
+<tr class="odd"><td class="text"> GOMMA </td> 
+<td> 5,341 </td>  
+<td>0.746</td> <td>0.553</td> <td>0.625</td>
+<td class="right">24.01&#37</td>  
+</tr>
+
+
+<tr class="even"><td class="text"> LogMapLt </td> 
+<td class="bold"> 711 </td>  
+<td>0.831</td> <td>0.515</td> <td>0.586</td>
+<td class="right">33.17&#37</td>  
+</tr>
+
+</table>
+</center>
+</p>
+
+<h2><a href="harmo2012.html">Harmonization of the mapping outputs</a></h2>
+
+<h2><a href="repair2012.html">Mapping repair evaluation</a></h2>
+
+<h2>References</h2>
+
+<p>[1] Christian Meilicke and Heiner Stuckenschmidt. Incoherence as a basis for measuring the
+quality of ontology mappings. In Proc. of 3rd International Workshop on Ontology Matching (OM), 2008.
+<a href="http://www.dit.unitn.it/~p2p/OM-2008/om2008_Tpaper1.pdf">[url]</a>
+</p>
+<p>[2] Ernesto Jimenez-Ruiz and Bernardo Cuenca Grau. LogMap: Logic-based and scalable ontology matching. 
+In Proc. of 10th International Semantic Web Conference (ISWC), 2011. 
+<a href="http://code.google.com/p/logmap-matcher/">[url]</a>
+</p>
+<p>[3] Christian Meilicke. <i>Alignment Incoherence in Ontology Matching.</i> University of Mannheim, 
+Chair of Artificial Intelligence (2011) <a href="http://web.informatik.uni-mannheim.de/alcomo/">[url]</a>
+</p>
+
+<h2>Contact</h2>
+
+<p>This track is organised by <a href="http://www.cs.ox.ac.uk/isg/people/ernesto.jimenez/">Ernesto Jimenez Ruiz</a>, 
+<a href="http://www.cs.ox.ac.uk/isg/people/bernardo.cuencagrau/">Bernardo Cuenca Grau</a> and 
+<a href="http://www.cs.ox.ac.uk/isg/people/ian.horrocks/">Ian Horrocks</a>,
+ and supported by the <a href="http://www.seals-project.eu/">SEALS</a> and <a href="http://www.cs.ox.ac.uk/isg/projects/LogMap/">LogMap</a> projects. 
+ If you have any question/suggestion related to the results of this track, feel free to write an email to ernesto 
+[at] cs [.] ox [.] ac [.] uk or ernesto [.] jimenez [.] ruiz [at] gmail [.] com
+</p>
+
+<div class="address">
+Original page: <a href="http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/results2012.html">http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/results2012.html</a> [cached: 24/06/2014]
+<div class="footer">http://oaei.ontologymatching.org/2012/results/largebio/</div>
+</div>
+</body></html>

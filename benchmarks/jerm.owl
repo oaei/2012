@@ -1,0 +1,2150 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#">
+  <owl:Ontology rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#"/>
+  <owl:Class rdf:ID="chemostat_measurements">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TechnologyType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="protein_structural_analysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="proteomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00079</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gas_flow">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:110002</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Inductively_Coupled_Plasma_Mass_Spectrometry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="mass_Spectrometry"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00122</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="concentration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00031</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="protein_purification">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="usesTechnology"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="HPLC"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="protein_identification"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00078</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="software">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Equipment"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="version"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="title"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40005</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="QualityControlType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MicroarrayFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:87160</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ProteomicsFactors">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ExperimentalFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40008</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="genome-scale_enzyme_activity_profiling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="reactomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00081</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="pH">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00035</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="metabolite">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="compound"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MicroarrayAssay">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="NormalizationMethod"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Hybridization"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Assay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#QualityControlType"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:85192</dc:identifier>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="microarray"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="transcripomics"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="expression"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Label"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ReplicateType"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Comparative_genomic_hybridization">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00086</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="flux_balance_analysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="fluxomics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="metabolite_profiling"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00069</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="organism">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="NCBI_ID"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="materialEntity"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="genotype"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00029</dc:identifier>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="protein"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="is_investigated_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="phenotype"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#is_investigated_by"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Project"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="strain"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasAssociatedItem"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Asset"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasAssociatedItem"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="ExperimentDescription"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="investigates"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="WebLink"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00020</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Accelerator_Mass_Spectrometry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00120</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ExperimentalAssayType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00085</dc:identifier>
+    <dc:description>The study of the transcriptome, the complete set of RNA transcripts produced by the genome at any one time</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="ExpressionValueMeasurementType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:20946</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="cheminformatics_analysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="informaticsAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00047</dc:identifier>
+    <dc:description>a cheminformatics analysis is an "assay" performed in silico, employing cheminformatics techniques to analyse biological data</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Format"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Person"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:description>ExperimentalFactors are descriptors of the properties of the experiment. How the culture was prepared, what organism they are from, and what type of experiment was run</dc:description>
+    <dc:identifier>JERM:00017</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Intracellular_Metabolite_Concentration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Metabolite_concentration"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="by-product_formation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="organism_or_strain_characterisation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BioMaterial">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <rdfs:comment>This part of the ontology is still in development</rdfs:comment>
+    <dc:identifier>JERM:67650</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Model">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasFormat"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="ModelExecutionEnvironment"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasFormat"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="ModelFormat"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="termsofDistribution"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isDerivedFrom"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Publication"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isDerivedFrom"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Data"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00012</dc:identifier>
+    <dc:description>computational models developed in SysMO</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasFormat"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="DataFileFormat"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00011</dc:identifier>
+    <dc:description>SEEK data files</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="Extract">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#BioMaterial"/>
+    <dc:identifier>JERM:97016</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="small-molecule_microarray">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genome-scale_enzyme_activity_profiling"/>
+    <dc:identifier>JERM:00082</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="qPCR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PCR"/>
+    </rdfs:subClassOf>
+    <dc:description>quantitative real time polymerase chain reaction (Q-PCR/qPCR) or kinetic polymerase chain reaction, is  based on PCR and is used to amplify and simultaneously quantify a targeted DNA molecule</dc:description>
+    <rdfs:comment>also known as real-time PCR or quantative PCR</rdfs:comment>
+    <dc:identifier>JERM:00104</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Publication">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    </rdfs:subClassOf>
+    <dc:description>publication abstracts from SysMO</dc:description>
+    <dc:identifier>JERM:00014</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="CultureGrowth">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:description>SysMO studies microorganisms. Each experiment is performed on cell cultures, so it is essential to record the type of culture in use each time</dc:description>
+    <dc:identifier>JERM:00026</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="CollisionCell">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PostSourceComponent"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50003</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="chromatography">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:description>Chromatography is the collective term for a set of laboratory techniques for the separation of mixtures. It involves passing a mixture dissolved in a "mobile phase" through a stationary phase, which separates the analyte to be measured from other molecules in the mixture based on differential partitioning between the mobile and stationary phases.</dc:description>
+    <dc:identifier>JERM:00095</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="amplification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="genomics"/>
+    </rdfs:subClassOf>
+    <dc:description>e.g. RT_PCR to amplify DNA from RNA</dc:description>
+    <dc:identifier>JERM:000007</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="tiling_array">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50016</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MaterialType">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#BioMaterial"/>
+    <dc:identifier>JERM:75160</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="discontinuousEnzymatic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="enzymaticAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sample">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#BioMaterial"/>
+    <dc:identifier>JERM:69863</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="BioCharacteristics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:22481</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MassSpecProteomicsData">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40002</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="binding">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:description>laboratory techniques which involve separation by binding the molecules of interest</dc:description>
+    <dc:identifier>JERM:00094</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Label">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:24776</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="limited_media_growth">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="mathematical_modelType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00103</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SpectrumInterpretation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:40011</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="methylation_profiling">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#usesTechnology"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="DNA_Methylation"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    <dc:identifier>JERM:00091</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SOPFileFormat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00041</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ChIP-on-chip">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>Chromatin Immunoprecipitation on Chip</rdfs:comment>
+    <dc:identifier>JERM:00130</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MassSpecAssay">
+    <dc:description>proteomicsAssay</dc:description>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Instrument"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Quantitation"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <dc:identifier>JERM:0007</dc:identifier>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#software"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="IonizationSource"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EnzymeReactionData">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="sequence_accession"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="ECNumber"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40001</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="NatureProtocols">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOPFileFormat"/>
+    <dc:identifier>JERM:00042</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasContributor"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isAssociatedWith"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isPartOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:DatatypeProperty rdf:ID="description"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#title"/>
+            <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Equipment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:description>all shareable entities in the SysMO SEEK are kinds of Assets</dc:description>
+    <dc:identifier>JERM:00010</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MeasuredItem">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <dc:description>the entity under investigation (e.g. glucose)</dc:description>
+    <dc:identifier>JERM:00028</dc:identifier>
+    <rdfs:comment>This part of the ontology is still in development</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="miRNA_microarray">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00133</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="primer_design">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00062</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="electrophoresis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:description>Electrophoresis is the motion of dispersed particles relative to a fluid under the influence of a spatially uniform electric field</dc:description>
+    <dc:identifier>JERM:00096</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="volume">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:110000</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="protein-protein_interaction_profiling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="interactomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00064</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="dry_biomass">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="mass"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00037</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="genotyping">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00061</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="biological_entity">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MeasuredItem"/>
+    <dc:identifier>JERM:40012</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="enzymology">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ModelAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00049</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#materialEntity"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40017</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#expression">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00033</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SOP">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasFormat"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOPFileFormat"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:description>Standard operating procedures and protocols from SysMO</dc:description>
+    <dc:identifier>JERM:00015</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="metabolomics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00065</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Equipment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:identifier>JERM:90004</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SNP_array">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50017</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Ion_Mobility_Spectrometry_Mass_Spectrometry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00123</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MicroarrayData">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:82270</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Batch">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#CultureGrowth"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Chemostat"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="specific_concentration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#concentration"/>
+    <dc:identifier>JERM:00032</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Ordinary_differential_equation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mathematical_modelType"/>
+    <dc:identifier>JERM:00141</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ProteomicsFileFormat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#DataFileFormat"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40017</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="catabolic_response">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolite_profiling"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00068</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="translational_profiling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="gene_expression_profiling"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00090</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Exon_array">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50015</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#13C_radiolabelling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="radioactive_labelling"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00137</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="protein_expression_profiling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00076</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="tiling_path">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    <dc:identifier>JERM:00092</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isAssociatedWith"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="isContributorOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:identifier>JERM:00019</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Quantitation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:50009</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MassSpecFileFormat">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFileFormat"/>
+    <dc:identifier>JERM:40018</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:description>Mass spectrometry (MS) is an analytical technique for the determination of the elemental composition of a sample or molecule. It is used for elucidating the chemical structures of peptides and sometimes other chemical compounds</dc:description>
+    <dc:identifier>JERM:00099</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="StrendaFileFormat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#DataFileFormat"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40019</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="IonOptics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50006</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="extracellular_concentration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#concentration"/>
+    <dc:identifier>JERM:000001</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ReplicateType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50925</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="cell_size">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="qRT-PCR">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PCR"/>
+    </rdfs:subClassOf>
+    <rdfs:comment>Real-time reverse-transcription PCR, qRT-PCR</rdfs:comment>
+    <dc:identifier>JERM:00105</dc:identifier>
+    <dc:description>Reverse transcription polymerase chain reaction (RT-PCR) is a variant of polymerase chain reaction (PCR). In RT-PCR an RNA strand is first reverse transcribed into its DNA complement (complementary DNA, or cDNA) using the enzyme reverse transcriptase, and the resulting cDNA is amplified using traditional or real-time PCR.</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="SBML_format">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40021</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="pathway">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="functionalEntity"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40016</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#DataFileFormat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelExecutionEnvironment"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOPFileFormat"/>
+    <dc:identifier>JERM:00038</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00100</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="flow_cytometry">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:90003</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Metabolite_concentration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolite_profiling"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="liquid_chromatography-tandem_mass_spectrometry">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00129</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <dc:identifier>JERM:00025</dc:identifier>
+    <dc:description>describes the technologies and/or techniques used in performing experiments</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="SDS_PAGE">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="gel_electrophoresis"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00116</dc:identifier>
+    <rdfs:comment>sodium dodecyl sulfate polyacrylamide gel electrophoresis</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#functionalEntity">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#biological_entity"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#materialEntity"/>
+    </owl:disjointWith>
+    <dc:identifier>JERM:40014</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Partial_differential_equation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mathematical_modelType"/>
+    <dc:identifier>JERM:00142</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein_identification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00077</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeOfFlightDriftTube">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50008</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="imaging">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <dc:identifier>JERM:00098</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="activity">
+    <rdfs:label>activity</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:110001</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="transcriptional_profiling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#gene_expression_profiling"/>
+    </rdfs:subClassOf>
+    <dc:description>also called cDNA Microarray</dc:description>
+    <dc:identifier>JERM:00089</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="post-translational_modification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00074</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="units"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOP"/>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="timepoint"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MeasuredItem"/>
+    <dc:description>factors studied describe what types of measurements were taken (i.e. what factors were expected to change during the experiment)</dc:description>
+    <dc:identifier>JERM:00027</dc:identifier>
+    <rdfs:comment>also known as ExperimentalConditions when used to set up initial conditions for an experiment/assay</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Linear_equation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mathematical_modelType"/>
+    <dc:identifier>JERM:00140</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="capillary_electrophoresis">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#electrophoresis"/>
+    <dc:identifier>JERM:00113</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Algebraic_equation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mathematical_modelType"/>
+    <dc:identifier>JERM:00139</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="translation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00055</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#2D_gel_electrophoresis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#gel_electrophoresis"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00115</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="bioinformatics_analysis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#informaticsAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:description>a bioinformatics analysis is an "assay" performed in silico, employing bioinformatics techniques to analyse biological data</dc:description>
+    <dc:identifier>JERM:00046</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MAGE-TAB">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MicroarrayFileFormat"/>
+    </rdfs:subClassOf>
+    <dc:description>define what is inside MAGE-TAB from other ontology</dc:description>
+    <dc:identifier>JERM:91021</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Buffer">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+  </owl:Class>
+  <owl:Class rdf:ID="enzymeActivity">
+    <rdfs:label>enzymeActivity</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#activity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="enzymatic_activity_measurements">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <dc:identifier>JERM:00097</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="progressive_curve_experiment">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#enzymatic_activity_measurements"/>
+    <dc:identifier>JERM:00118</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MALDI">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#IonizationSource"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50001</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <dc:identifier>JERM:38539</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="peptide">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein"/>
+    <dc:identifier>JERM:50020</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="FRAP">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#imaging"/>
+    <dc:identifier>JERM:00119</dc:identifier>
+    <rdfs:comment>fluorescence recovery after photobleaching</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="metabolic_network">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00052</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#materialEntity">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#biological_entity"/>
+    <dc:identifier>JERM:40013</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Hybridization">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    <dc:identifier>JERM:44538</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ExperimentalFactorType">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    <dc:identifier>JERM:26754</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="EnzymeReactionAssay">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#enzymaticAssay"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40006</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#compound">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#materialEntity"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AssayType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00043</dc:identifier>
+    <rdfs:isDefinedBy>An experimental assay is an assay carried out in a laboratory</rdfs:isDefinedBy>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#interactomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:identifier>JERM:00063</dc:identifier>
+    <dc:description>the study of the network of interactions between proteins, metabolites and other biological objects in the cell, and the consequences of those interactions</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="signal_transduction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00053</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PCR">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <dc:identifier>JERM:00093</dc:identifier>
+    <dc:description>the polymerase chain reaction (PCR) is a technique to amplify a single or few copies of a piece of DNA across several orders of magnitude, generating thousands to millions of copies of a particular DNA sequence.</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#radioactive_labelling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="molecule_labelling"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00136</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectrosprayIonisation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#IonizationSource"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50000</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="microRNA_profiling">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#usesTechnology"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#miRNA_microarray"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    <dc:identifier>JERM:00092</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType"/>
+    </rdfs:subClassOf>
+    <dc:description>a model analysis type is a model "assay" type to classify the information contained within the model. The categories correspond to the existing categories in JWS Onnline, a tool for model simmulation</dc:description>
+    <dc:identifier>JERM:00044</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="ExperimentalDesignType">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFactors"/>
+    <dc:identifier>JERM:58493</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#IonizationSource">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:40009</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="affinity_chromatography">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#chromatography"/>
+    <dc:identifier>JERM:00110</dc:identifier>
+    <rdfs:comment>affinity_purification</rdfs:comment>
+    <dc:description>Affinity chromatography is based on selective non-covalent interaction between an analyte and specific molecules.
+ It is often used in biochemistry in the purification of proteins bound to tags. These fusion proteins are labeled with compounds such as His-tags, biotin or antigens, which bind to the stationary phase specifically.</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="protein-protein_interaction">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00075</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SNP_detection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00059</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gene_regulatory_network">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    <dc:identifier>JERM:00051</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="small_molecule_microarray">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    <dc:identifier>JERM:00134</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#molecule_labelling">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <dc:identifier>JERM:00101</dc:identifier>
+    <dc:description>techniques for labelling molecules to allow them to be detected in laboratory analyses</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="optical_density">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    <dc:identifier>JERM:00034</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SBML_model">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Model"/>
+    <dc:identifier>JERM:40003</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="metabolism">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    <dc:identifier>JERM:00054</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Chemostat">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#CultureGrowth"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Liquid_chromatography_Mass_Spectrometry">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00125</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="custom_Array">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    <dc:identifier>JERM:00132</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Gas_Chromatography_Mass_Spectrometry">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00121</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="bait_protein_tagging">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#molecule_labelling"/>
+    <dc:identifier>JERM:00135</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Study">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Investigation"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+    </rdfs:subClassOf>
+    <dc:description>a collection of experiments designed to answer a particular biological question</dc:description>
+    <dc:identifier>JERM:00023</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#gel_electrophoresis">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#electrophoresis"/>
+    <dc:identifier>JERM:00114</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="growth_medium">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Substrate_utilization">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MALDI_TOF">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00126</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:identifier>JERM:00018</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolite_profiling">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolomics"/>
+    <dc:identifier>JERM:00067</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="NMR">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="technologyUsedIn"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein_structural_analysis"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="structural_methods"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00138</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MIRIAMCompliant">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:50012</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="enzyme">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein"/>
+    <dc:identifier>JERM:501000</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#title"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#description"/>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <dc:identifier>JERM:00016</dc:identifier>
+    <dc:description>the experimental context for any of the SysMO assets</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Instrument">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Equipment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="manufacturer"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="instrument_model"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40004</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:50002</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SELDI_TOF">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00127</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Source">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#BioMaterial"/>
+    <dc:identifier>JERM:15506</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#reactomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:description>the study of biochemical reactions in the cell</dc:description>
+    <dc:identifier>JERM:00080</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#HPLC">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#chromatography"/>
+    <dc:identifier>JERM:00108</dc:identifier>
+    <rdfs:comment>High Performance Liquid Chromatography</rdfs:comment>
+    <dc:description>High Performance Liquid Chromatography. 
+Liquid chromatography (LC) is a separation technique in which the mobile phase is a liquid</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#structural_methods">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <dc:identifier>JERM:00102</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#2-hybrid_system">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#binding"/>
+    <rdfs:comment>yeast 2 hybrid</rdfs:comment>
+    <dc:identifier>JERM:00106</dc:identifier>
+    <dc:description>Two-hybrid screening (also known as yeast two-hybrid system or Y2H) is a molecular biology technique used to discover protein-protein interactions and protein-DNA interactions by testing for physical interactions</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="Tandem_Mass_Spectrometry">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00128</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#DNA_Methylation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#microarray"/>
+    <dc:identifier>JERM:00131</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelExecutionEnvironment">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOPFileFormat"/>
+    <dc:identifier>JERM:00039</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Study"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#CultureGrowth"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#investigates"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Investigation"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Study"/>
+    <dc:identifier>JERM:00021</dc:identifier>
+    <dc:description>descriptions of individual experiments</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="comparative_genomics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00060</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gene_expression">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    <dc:identifier>JERM:00050</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="surface_plasmon_resonance">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#binding"/>
+    <dc:identifier>JERM:00107</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="UPLC">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#chromatography"/>
+    <dc:description>Ultra Performance Liquid Chromatography
+Liquid chromatography (LC) is a separation technique in which the mobile phase is a liquid</dc:description>
+    <rdfs:comment>Ultra Performance Liquid Chromatography</rdfs:comment>
+    <dc:identifier>JERM:00109</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="cell_growth_optimisation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation"/>
+    <dc:identifier>JERM:00066</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Detectors">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+    <dc:identifier>JERM:50004</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="DNA_sequencing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00058</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Investigation">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Study"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isAssociatedWith"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Study"/>
+    <dc:identifier>JERM:00022</dc:identifier>
+    <dc:description>A high level description of the experimental work undertaken</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    <dc:identifier>JERM:00030</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:identifier>JERM:00072</dc:identifier>
+    <dc:description>Proteomics is the study of the function and structure of proteins in an organism, predominantly using high-throughput techniques</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#informaticsAnalysisType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:00045</dc:identifier>
+    <dc:description>an informatics analysis is an "assay" performed in silico, employing informatics techniques to analyse data</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="single_cell">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:identifier>JERM:00084</dc:identifier>
+    <dc:description>analysing the response of single cells to stimuli and perturbations by fluorescence and imaging</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="Isotope_Ratio_Mass_Spectrometry">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#mass_Spectrometry"/>
+    <dc:identifier>JERM:00124</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="optical_density_600">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#optical_density"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFileFormat">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#DataFileFormat"/>
+    <dc:identifier>JERM:37735</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gas_chromatography">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#chromatography"/>
+    <dc:description>Gas chromatography (GC) is a separation technique in which the mobile phase is a gas</dc:description>
+    <dc:identifier>JERM:00111</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:identifier>JERM:00057</dc:identifier>
+    <dc:description>the study of the genome of an organism</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <dc:description>need to link to biological objects
+genes
+proteins
+enzyme reactions
+= GO
+
+pathways
+cells
+organisms
+
+
+we already have organisms
+
+once we can point to the species of reactions, we can model the SBO part more effectively
+
+Factors studied and experimental conditions make more sense seperately now we have more examples
+
+
+Can we import the entity part of the SBO? 
+The interaction between models and data is at the heart of SysMO, so the SBO should also be</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="pressure">
+    <rdfs:label>pressure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    <dc:identifier>JERM:90001</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="temperature">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#FactorsStudied"/>
+    <dc:identifier>JERM:00036</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#fluxomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+    <dc:description>the dynamic changes of molecules within a cell over time</dc:description>
+    <dc:identifier>JERM:00056</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#gene_expression_profiling">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    <dc:identifier>JERM:00088</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="MAGEML">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#MicroarrayFileFormat"/>
+    <dc:identifier>JERM:30184</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="SpectrumGeneration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:40010</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="genome_scale">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CellML">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat"/>
+    </rdfs:subClassOf>
+    <dc:identifier>JERM:40020</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="intracellular_concentration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#concentration"/>
+    <dc:identifier>JERM:000002</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="metabonomics">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolomics"/>
+    <rdfs:comment>quantitative metabolomics</rdfs:comment>
+    <dc:identifier>JERM:00071</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="FACS">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#flow_cytometry"/>
+    <dc:identifier>JERM:90002</dc:identifier>
+    <dc:description>Fluorescence Activated Cell Sorting</dc:description>
+  </owl:Class>
+  <owl:Class rdf:ID="initial_rate_experiment">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#enzymatic_activity_measurements"/>
+    <dc:identifier>JERM:00117</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="immune_precipitation">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+    <dc:identifier>JERM:00073</dc:identifier>
+    <rdfs:comment>not sure about this one</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="cellAssay">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+    <dc:description>cellAssay</dc:description>
+    <dc:identifier>JERM:40007</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="cell_cycle">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+    <dc:identifier>JERM:00048</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="Extracellular_Metabolite_concentration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Metabolite_concentration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FT-ICR">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+    <dc:identifier>JERM:50005</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="glucose_pulse">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#metabolite_profiling"/>
+    <dc:identifier>JERM:00070</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="continuousEnzymatic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#enzymaticAssay"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IonTrap">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#PostSourceComponent"/>
+    <dc:identifier>JERM:50007</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelFormat">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOPFileFormat"/>
+    <dc:identifier>JERM:00040</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gene">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#materialEntity"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#protein"/>
+    <dc:identifier>JERM:40015</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#enzymaticAssay">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#reactomics"/>
+    <dc:identifier>JERM:00083</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="RNAi">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    <dc:identifier>JERM:00087</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#NormalizationMethod">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ProteomicsFactors"/>
+    <dc:identifier>JERM:62033</dc:identifier>
+  </owl:Class>
+  <owl:Class rdf:ID="gel_filtration">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#chromatography"/>
+    <rdfs:comment>size_exclusion_chromatography</rdfs:comment>
+    <dc:identifier>JERM:00112</dc:identifier>
+    <dc:description>Size exclusion chromatography (SEC), also known as gel permeation chromatography or gel filtration chromatography, separates particles on the basis of size. It is generally a low resolution chromatography and thus it is often reserved for the final, "polishing" step of a purification. It is also useful for determining the tertiary structure and quaternary structure of purified proteins.</dc:description>
+  </owl:Class>
+  <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType">
+    <rdfs:subClassOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalFactors"/>
+    <owl:disjointWith rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <rdfs:comment>The assay_type hierarchy allows scientists to categorise their experimental assays, informatics analyses and computational models within SysMO</rdfs:comment>
+    <dc:identifier>JERM:00024</dc:identifier>
+    <dc:description>An assay type describes the type of experiment being performed</dc:description>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isContributorOf">
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasContributor"/>
+    </owl:inverseOf>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#investigates">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isAssociatedWith">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#is_investigated_by">
+    <owl:inverseOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#investigates"/>
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#usesTechnology">
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType"/>
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isTypeOf">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#technologyUsedIn">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#AssayType"/>
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#TechnologyType"/>
+    <owl:inverseOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#usesTechnology"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasFormat">
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isFormatOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isFormatOf">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Format"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasPart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <owl:inverseOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isPartOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasContributor">
+    <rdfs:range rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Person"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Assay"/>
+    <owl:inverseOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isTypeOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isDerivedFrom">
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Model"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Publication"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#hasAssociatedItem">
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <owl:inverseOf rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#isAssociatedWith"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Asset"/>
+          <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentDescription"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="reactionCatalyst"/>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#timepoint">
+    <rdfs:label>timepoint</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#version">
+    <rdfs:label>version</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#manufacturer">
+    <rdfs:label>manufacturer</rdfs:label>
+    <rdfs:domain rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Instrument"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#instrument_model">
+    <rdfs:label>instrument_model</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#termsofDistribution">
+    <rdfs:label>termsofDistribution</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#units">
+    <rdfs:label>units</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#sequence_accession">
+    <rdfs:label>sequence_accession</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+  <owl:Thing rdf:ID="SulfoSys">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates>
+      <owl:Thing rdf:ID="Sulfolobus_solfataricus">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+      </owl:Thing>
+    </investigates>
+  </owl:Thing>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#fluxomics"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#genomics"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#interactomics"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism_or_strain_characterisation"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#proteomics"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#reactomics"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#single_cell"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#transcripomics"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:Thing rdf:ID="Streptococcus_pneumoniae">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+    <rdfs:label>Streptococcus_pneumoniae</rdfs:label>
+    <is_investigated_by>
+      <owl:Thing rdf:ID="SilicoTryp">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+        <rdfs:label>SilicoTryp</rdfs:label>
+      </owl:Thing>
+    </is_investigated_by>
+  </owl:Thing>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+  <Project rdf:ID="STREAM">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <investigates>
+      <owl:Thing rdf:ID="Streptomyces_coelicolor">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+      </owl:Thing>
+    </investigates>
+  </Project>
+  <organism rdf:ID="Pseudomonas_fluorescens">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <is_investigated_by>
+      <owl:Thing rdf:ID="ScaRAB">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+      </owl:Thing>
+    </is_investigated_by>
+  </organism>
+  <owl:Thing rdf:ID="Translucent">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates>
+      <organism rdf:ID="Saccharomyces_cerevisiae">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+      </organism>
+    </investigates>
+  </owl:Thing>
+  <owl:Thing rdf:ID="Escherichia_coli">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+    <is_investigated_by>
+      <Project rdf:ID="KOSMOBAC">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+      </Project>
+    </is_investigated_by>
+    <is_investigated_by>
+      <owl:Thing rdf:ID="SUMO">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+      </owl:Thing>
+    </is_investigated_by>
+  </owl:Thing>
+  <organism rdf:ID="Trypanosoma_brucei">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label>Trypanosoma_brucei</rdfs:label>
+    <is_investigated_by>
+      <Project rdf:ID="Noisy-Strep">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label>Noisy-Strep</rdfs:label>
+      </Project>
+    </is_investigated_by>
+  </organism>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Data"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Model"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Publication"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SOP"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:Thing rdf:ID="PSYSMO">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates>
+      <organism rdf:ID="Pseudomonas_putida">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+      </organism>
+    </investigates>
+  </owl:Thing>
+  <owl:AllDisjointClasses>
+    <owl:members rdf:parseType="Collection">
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ExperimentalAssayType"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#ModelAnalysisType"/>
+      <owl:Class rdf:about="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#informaticsAnalysisType"/>
+    </owl:members>
+  </owl:AllDisjointClasses>
+  <owl:Thing rdf:ID="MOSES">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Saccharomyces_cerevisiae"/>
+  </owl:Thing>
+  <organism rdf:ID="Bacillus_subtilis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <is_investigated_by>
+      <Project rdf:ID="BaCell">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <investigates rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Bacillus_subtilis"/>
+      </Project>
+    </is_investigated_by>
+  </organism>
+  <owl:Thing rdf:ID="COSMIC">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates>
+      <organism rdf:ID="Clostridium_acetobutylicum">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <is_investigated_by rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#COSMIC"/>
+      </organism>
+    </investigates>
+  </owl:Thing>
+  <owl:Thing rdf:ID="SysmoLab">
+    <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#Project"/>
+    <investigates>
+      <organism rdf:ID="Enterococcus_faecalis">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <is_investigated_by rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#SysmoLab"/>
+      </organism>
+    </investigates>
+    <investigates>
+      <organism rdf:ID="Lactococcus_lactis">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+      </organism>
+    </investigates>
+    <investigates>
+      <owl:Thing rdf:ID="Streptococcus_pyogenes">
+        <rdf:type rdf:resource="http://oaei.ontologymatching.org/2011/benchmarks/jerm/1/101/onto.rdf#organism"/>
+      </owl:Thing>
+    </investigates>
+  </owl:Thing>
+</rdf:RDF>

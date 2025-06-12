@@ -1,0 +1,339 @@
+<html><head>
+<title>OAEI 2012::Large BioMed Track</title>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body bgcolor="white" face="tahoma, arial">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI-2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<h1>Large biomedical ontologies</h1>
+
+<p><b><a href="../results/largebio/index.html">results available now</a></b></li>
+
+<h2>General description</h2>
+
+<p>This track consists of finding alignments between the 
+<a href="http://sig.biostr.washington.edu/projects/fm/">Foundational Model of Anatomy</a> (FMA),
+<a href="http://www.ihtsdo.org/index.php?id=545">SNOMED CT</a>, 
+and the <a href="http://ncit.nci.nih.gov/">National Cancer Institute Thesaurus</a> (NCI). These ontologies are semantically rich and 
+contain tens of thousands of classes.</p>
+
+<p><a href="http://www.nlm.nih.gov/research/umls/">UMLS Metathesaurus</a> has been selected as the basis for the 
+track reference alignments
+(see <a href="oaei2012_umls_reference.html">oaei2012_umls_reference</a> for details).
+
+UMLS  is currently the most comprehensive effort for integrating independently-developed medical thesauri and ontologies,
+including FMA, SNOMED CT, and NCI. The integration of new UMLS sources combines automatic techniques, 
+expert assessment, and auditing protocols. 
+</p>
+
+<h2><a name="datasets">Data sets</a></h2>
+
+<p style="background-color: yellow;">Note that, if you are using the OWL API, the following parameter "-DentityExpansionLimit=100000000" should be given to the JVM in order to be able to load large ontologies.</p>
+
+
+<p>The Large BioMed Track consists of three matching problems. The complete datasets for the OAEI 2012 campaign can be downloaded as a <a href="LargeBioMed_dataset_oaei2012.zip">zip file</a>.</p>
+
+<p>Note that ontologies have been normalised for the OAEI, as a result the 
+synonyms of concept names are provided as "rdfs:label" annotations.
+</p>
+
+<p>
+We have split the matching problems in three tasks involving different
+fragments of the ontologies.
+The reference alignments will be the same for the three tasks, however the complexity will be different, 
+in terms of both performance and scalability, since larger ontologies will also involve more possible candidate mappings.
+</p>  
+
+<p>The complete datasets for the OAEI 2012 campaign can be downloaded as a <a href="LargeBioMed_dataset_oaei2012.zip">zip file</a>.</p>
+
+
+
+
+
+<p>
+It contains the three following problems (at different scales).
+</p>
+
+<h3>FMA-NCI matching problems</h3>
+
+
+<h4>Reference alignments</h4>
+
+<p>There are 4 reference alignments for the FMA-NCI matching tasks. Three of them are <a href="oaei2012_umls_reference.html">UMLS-based</a>.
+The fourth has been created by harmonising the outputs of the tools participating in the 
+<a href="../../2011.5/results/largeBioMed/index.html">OAEI 2011.5 campaign</a>.
+	<ul>
+		<li><b>Original UMLS mappings:</b> 3,024 mappings ("=")</li>			
+		<li><b>Refined UMLS mappings (LogMap):</b> 2,898 mappings ("=", "<", ">")</li>
+		<li><b>Refined UMLS mappings (Alcomo):</b> 2,819 mappings ("=")</li>
+		<li><b>Harmonised mappings OAEI 2011.5:</b> 2,890 mappings ("="). See <a href="../../2011.5/results/largeBioMed/harmo.html">OAEI 2011.5 harmonisation</a> for details.</li>
+	</ul>
+</p>
+
+<h4>Test Suite Information</h4>
+
+<p>Required input for SEALS OMT client:
+<div class="testsuite">
+<ul>
+<li><b>Repository:</b>  <span class="testsuiteid">http://seals-test.sti2.at/tdrs-web/</span></li>
+<li><b>Suite-ID:</b>  <span class="testsuiteid">cf0378d9-da30-4b58-b937-192028ed4961</span></li>
+<li><b>Version-ID:</b>  <span class="testsuiteid"><i>see specific task</i></span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 1: FMA-NCI small fragments</h4>
+
+<p>
+This task consists of matching two (relatively) small fragments of FMA and NCI.
+The FMA fragment contains 3,696 classes (5% of FMA), while the NCI fragment 
+contains 6,488 classes (10% of NCI).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">725ea909-bf89-432f-96cb-747ac4065a52</span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 2: FMA-NCI large fragments</h4>
+
+<p>
+This task consists of matching two (relatively) large fragments of FMA and NCI.
+The FMA fragment contains 28,861 classes (37% of FMA), while the NCI fragment
+contains 25,591 classes (38% of NCI).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">20d79a92-8655-4864-b9ad-8bbb84616a35</span></li>
+</ul>
+</div>
+</p>
+ 
+<h4>Task 3: FMA-NCI whole ontologies</h4>
+
+<p>
+This task consists of matching the whole FMA and NCI ontologies, which contains 78,989 and 66,724 classes, respectively. 
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">4ac6ed2e-8183-4daa-a0ff-bd50e6b6d307</span></li>
+</ul>
+</div>
+</p>
+
+<h3>FMA-SNOMED matching problems</h3>
+
+<h3>Reference alignments</h3>
+
+<p>There are 3 <a href="oaei2012_umls_reference.html">UMLS-based</a> reference alignments for the FMA-SNOMED matching tasks.</p>
+<p>
+	<ul>
+		<li><b>Original UMLS mappings:</b> 9,008 mappings ("=")</li>			
+		<li><b>Refined UMLS mappings (LogMap):</b> 8,111 mappings ("=", "<", ">")</li>
+		<li><b>Refined UMLS mappings (Alcomo):</b> 8,132 mappings ("=")</li>
+	</ul>
+</p>
+
+<h4>Test Suite Information</h4>
+
+<p>Required input for SEALS OMT client:
+<div class="testsuite">
+<ul>
+<li><b>Repository:</b>  <span class="testsuiteid">http://seals-test.sti2.at/tdrs-web/</span></li>
+<li><b>Suite-ID:</b>  <span class="testsuiteid">cf0378d9-da30-4b58-b937-192028ed4961</span></li>
+<li><b>Version-ID:</b>  <span class="testsuiteid"><i>see specific task</i></span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 1: FMA-SNOMED small fragments</h4>
+
+<p>
+This task consists of matching two (relatively) small fragments of FMA and SNOMED.
+The FMA fragment contains 10,157 classes (13% of FMA), while the SNOMED fragment 
+contains 13,412 classes (5% of SNOMED).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">afa03f95-a864-4c58-95a1-f247011ad613</span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 2: FMA-SNOMED large fragments</h4>
+
+<p>
+This task consists of matching two (relatively) large fragments of FMA and SNOMED.
+The FMA fragment contains 50,523 classes (64% of FMA), while the SNOMED fragment
+contains 122,464 classes (40% of SNOMED).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">78811986-3e40-48a7-b75e-d263cfd44f51</span></li>
+</ul>
+</div>
+</p>
+ 
+<h4>Task 3: FMA whole ontology with SNOMED large fragment</h4>
+
+<p>
+This task consists of matching the whole FMA that contains 78,989 classes with a large SNOMED fragment that contains 122,464 classes (40% of SNOMED). 
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">c36feab1-5fb2-4c52-8968-88c973938415</span></li>
+</ul>
+</div>
+</p>
+
+<h3>SNOMED-NCI matching problems</h3>
+
+
+<h4>Reference alignments</h4>
+
+<p>There are 2 <a href="oaei2012_umls_reference.html">UMLS-based</a> reference alignments for the SNOMED-NCI matching tasks.
+Note that, at the time of creating the datasets, we could not compute a refined UMLS alignment set with Alcomo. The new
+version of Alcomo, however, has shown to be able to cope with SNOMED-NCI.</p>
+<p>
+	<ul>
+		<li><b>Original UMLS mappings:</b> 18,844 mappings ("=")</li>			
+		<li><b>Refined UMLS mappings (LogMap):</b> 18,324 mappings ("=", "<", ">")</li>
+	</ul>
+</p>
+
+<h4>Test Suite Information</h4>
+
+<p>Required input for SEALS OMT client:
+<div class="testsuite">
+<ul>
+<li><b>Repository:</b>  <span class="testsuiteid">http://seals-test.sti2.at/tdrs-web/</span></li>
+<li><b>Suite-ID:</b>  <span class="testsuiteid">cf0378d9-da30-4b58-b937-192028ed4961</span></li>
+<li><b>Version-ID:</b>  <span class="testsuiteid"><i>see specific task</i></span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 1: SNOMED-NCI small fragments</h4>
+
+<p>
+This task consists of matching two (relatively) small fragments of SNOMED and NCI.
+The SNOMED fragment contains 51,128 classes (17% of SNOMED), while the NCI fragment 
+contains 23,958 classes (36% of NCI).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">d4721f5f-0bb1-4b59-8e81-e3c7ad38f06b</span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 2: SNOMED-NCI large fragments</h4>
+
+<p>
+This task consists of matching two (relatively) large fragments of SNOMED and NCI.
+The SNOMED fragment contains 122,464 classes (40% of SNOMED), while the NCI fragment
+contains 49,795 classes (75% of NCI).
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">611c0450-5230-4b2c-a8fb-80280292e9e5</span></li>
+</ul>
+</div>
+</p>
+
+<h4>Task 3: SNOMED-NCI whole ontologies</h4>
+
+<p>
+This task consists of matching the whole NCI that contains 66,724 classes with a large SNOMED fragment that contains 122,464 classes (40% of SNOMED). 
+</p>
+
+<p>
+<div class="testsuite">
+<ul>
+<li><b>Version-ID:</b> <span class="testsuiteid">f85f75d6-2b63-440d-bfb8-bc239fa12f2c</span></li>
+</ul>
+</div>
+</p>
+
+
+<h2>Modalities</h2>
+
+<p>This track has two main objectives. On the one hand, it intends to evaluate the performance of matching systems when matching real large scale
+ontologies. On the other hand, it aims at creating an error-free "silver standard" reference alignment by "harmonising" the output of 
+different matching and debugging systems, together with the current UMLS mapping sets. 
+See <a href="../../2011.5/results/largeBioMed/harmo.html">OAEI 2011.5 harmonisation</a>.
+</p>
+
+<p>Regarding the use of <b>background knowledge</b>, the OAEI rules state that a resource (i.e. a third biomedical ontology) especially  
+designed for the test is not allowed. Particularly, matching systems using UMLS as background knowledge 
+will have an advantage since the reference alignment is also based on UMLS. Nevertheless, it will  
+be interesting to evaluate the performance of a system <b>with</b> and <b>without</b> specialised background knowledge. 
+Moreover, matching 
+systems using UMLS may be specially helpful in the creation of the proposed "silver standard" reference alignment. 
+</p>
+
+<h3>Modality 1: standard matching</h3>
+
+<p>For this modality the generated alignment should be an optimal 
+solution to the matching problem with respect to both recall and 
+precision. In the evaluation we will focus on the F-measure. 
+Furthermore, we also motivate the creation of an <b>error-free output</b>, that is, 
+the extracted mappings together with the ontologies should not lead to (many) 
+unsatisfiabilities.</p> 
+
+<p>
+The evaluation of Modality 1 will be run with support of <a href="http://www.seals-project.eu/">SEALS</a>. 
+This requires that you wrap your matching system in a way that allows us to execute it on the 
+<a href="../seals-eval.html">SEALS platform</a>. 
+</p>
+
+
+<h3>Modality 2: mapping debugging (optional)</h3>
+
+<p>Mapping debugging systems are also welcome to provide a revised version of the original UMLS mappings, 
+similar to the <a href="oaei2012_umls_reference.html">current provided refinements</a>.</p>
+
+
+<p>We aim at harmonising different revised subsets of the UMLS mappings together with the outputs of the participants from Modality 1 
+in order to create an error-free "silver standard" reference alignment. Participant outputs will also be compared against the 
+silver standard in order to analyse how different they are w.r.t. the other systems.</p>
+
+<p>Modality 2 will be optional and will be run in an 'off-line' way.</p>
+
+
+<h2>Contact</h2>
+
+<p>
+Ernesto Jimenez-Ruiz: ernesto [at] cs [.] ox [.] ac [.] uk
+</p>
+
+<div class="address">
+Original page: <a href="http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/">http://www.cs.ox.ac.uk/isg/projects/SEALS/oaei/2012/</a> [cached: 24/06/2014]
+<div class="footer">http://oaei.ontologymatching.org/2012/largebio/</div>
+</div>
+</body></html>

@@ -1,0 +1,363 @@
+<head>
+<title>OAEI 2012::Library Track results</title>
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+<style type="text/css">
+#Kopfbereich { position:absolute; top:20px; left:30px; }
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+<script type="text/javascript">
+
+<!-- array containg all data -->
+var data = new Array( 
+"AROMA","0.107","0.652","0.184","1096", "17001","-",
+"CODI","0.434","0.481","0.456","39869", "3100", "X",
+"GOMMA","0.537","0.906","0.674","804", "4712","-",
+"Hertuda","0.465","0.925","0.619","14363", "5559", "-",
+"HotMatch","0.645","0.575","0.608","14494", "2494", "X",
+"LogMapLt","0.577","0.776","0.662","21", "3756","-",
+"LogMap","0.688","0.644","0.665","95", "2620","-",
+"MapSSS","0.520","0.184","0.272","2171", "989", "X",
+"MatcherPref","0.820","0.642","0.720","75","2190","-",
+"MatcherPrefDE","0.891","0.601","0.717","42","1885","-",
+"MatcherPrefEN","0.808","0.439","0.569","36","1518","-",
+"MatcherAllLabels","0.544","0.896","0.677","735","4605","-",
+"Optima","0.321","0.072","0.117","37457", "624","-",
+"ServOMapLt","0.654","0.687","0.670","45", "2938","-",
+"ServOMap","0.717","0.619","0.665","44", "2413", "X",
+"WeSeE","0.612","0.607","0.609","144070", "2774", "X",
+"YAM++","0.595","0.750","0.664","496", "3522","-"
+);
+
+<!-- array in which the sorted data is located -->
+var sort_data = new Array(data.length);
+
+<!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
+<!-- below a certain upper heading -->
+var headings = new Array(); 
+  headings[0] = "Matcher"; 
+  headings[1] = "Precision";
+  headings[2]=  "Recall";
+  headings[3] = "F-Measure";
+  headings[4] = "Time[s]";
+  headings[5] = "Size";
+  headings[6] = "1:1";  
+
+<!-- determine the number of columns -->
+var columns = headings.length;
+var rows = data.length/columns;
+
+<!-- different heading formats according to the number of subheadings --> 
+var headingColumnsFormatting = new Array(
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"6\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\""
+ 
+);
+
+<!-- set the style of all other columns-->
+var columnsFormatting = new Array(
+ "width=\"75\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\"",
+ "width=\"75\" bgcolor=\"#00FFFF\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\""
+);
+
+<!-- for every column the sort type is set, e.g. alphabetical if the column should be sorted alphabetically -->
+var columnSortTypes = new Array(
+ "alphabetical","numericalInverse","numerical","numerical","numerical", "numerical", "numerical", "alphabetical"
+);
+
+<!-- table format -->
+var tableFormatting = "border=\"1\" style=\"border:solid 1px #808080\" cellspacing=\"0\"";
+
+<!-- load the arrow pictures -->
+var ArrowUp = "<img src=\"arrowUp.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowDown = "<img src=\"arrowDown.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowUpSorted = "<img src=\"arrowUpSorted.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+var ArrowDownSorted = "<img src=\"arrowDownSorted.jpg\" width=\"14\" height=\"12\" border=\"0\" alt=\"\">";
+
+var sortedLine = "";
+
+<!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
+function createSortedLine(number,direction) {
+ sortedLine = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine += "<th " + columnsFormatting[0] + ">";
+
+  <!-- sort ascending and print the right arrow in red--> 
+  if(direction == "ascending" && j == number) {
+   sortedLine += ArrowUpSorted + " ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  <!-- sort descending and print the right arrow in red--->
+  else if(direction == "descending" && j == number) {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine += " " + ArrowDownSorted;
+  }
+  <!-- print all other columns -->
+  else {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+ sortedLine += "<\/th>";
+ }
+ sortedLine += "<tr>";
+}
+
+<!-- function to really sort the columns according to a certain line number, type and direction -->
+function sortColumns(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ <!-- get the according data -->
+ for(var i = 0; i < rows; ++i)
+  columnsData[i] = dataToCompare[i] = data[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(direction == "descending") columnsData.reverse();
+ <!--- determine and set the according index -->
+ var alreadySet = false;
+ for(i = 0; i < rows; ++i)
+  for(var j = 0; j < rows; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+   <!-- check whether the current j is already set as index to avoid problems with same numbers -->
+	for(var k=0; k<index.length; k++) {
+	 if(index[k]==j) alreadySet=true;
+	 }
+     if(alreadySet==false) index[i] = j;
+	 else alreadySet=false;
+   }
+   	
+ <!-- create the sorted line and write it --> 
+ for(i = 0; i < rows; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data[i * columns + j] = data[index[i] * columns + j];
+ createSortedLine(number,direction);
+ writeTable(sort_data);
+}
+
+<!-- write the whole table with specified columns -->
+function writeTable(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j) 
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+<!--  content += "<tr>"; -->
+  <!--for(var j = 0; j < headings.length; ++j) {-->
+  
+<!--	for(var k = 1; k < headings[j].length; ++k)-->
+<!--		content += "<th " + headingColumnsFormatting[5] + ">" + headings[j][k] + "<\/th>"; -->
+	
+<!--  } -->  
+<!--  content += "<\/tr>";	-->
+ content += sortedLine;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows; ++i) { 
+	  if(i%2 == 0) {
+          content += "<tr bgcolor=\"FFFFDD\">";
+      } 
+	  else {
+          content += "<tr bgcolor=\"FFDDFF\">";
+      }
+	  if(Array[i * columns] == data[77]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }      
+      if(Array[i * columns] == data[70]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+	  if(Array[i * columns] == data[63]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+	  if(Array[i * columns] == data[56]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById)
+  document.getElementById("table").innerHTML = content;
+ else if(document.all)
+  document.all.table.innerHTML = content;
+ else if(document.layers) {
+  document.table.document.open();
+  document.table.document.write(content);
+  document.table.document.close();
+ }
+}
+<!-- sorting for numerical values-->
+function Numsort(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+    return a-b; 
+}
+
+<!-- sorting for inverse numerical values-->
+function NumsortInverse(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+	if(a=='X') {
+		return -1;
+	}
+	if(b=='X') {
+		return 1;
+	}
+	if(a=='T') {
+		return -1;
+	}
+	if(b=='T') {
+		return 1;
+	}
+    return b-a; 
+}
+</script>
+</head>
+<body onLoad="createSortedLine(-1,''); writeTable(data);">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="..">Ontology
+  Alignment Evaluation Initiative - OAEI-2012 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="../../../oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"/></a>
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+</div>
+
+<h1><img  width="150px" src="../../library/book1.png"/> Resuts for the Library test set </h1>
+
+<p>The following content is (mainly) based on the final version of the
+  library section in the <a href="../oaei2012.pdf">OAEI results paper</a>.<br/> 
+If you notice any kind of error (wrong numbers, incorrect information on a matching system) do not hesitate to contact us.</p>
+
+<h3>Reference Alignment</h3>
+
+<p>A mapping between STW and TheSoz already exists and has been manually created by domain experts in the KoMoHe project \cite{Mayr2008}. However, it does not cover the changes and enhancements in both thesauri since 2006. It is available in SKOS with the different matching types SKOS:exactMatch, SKOS:broaderMatch and SKOS:narrwowerMatch. Within the reference alignment, concepts of one thesaurus are aligned to more than one concept of the second thesaurus. Thus, we
+face a \textit{n:m} mapping of the concepts. All in all, 4,285 TheSoz concepts and 2,320 STW concepts are aligned with 2,839 exact matches, 34 broader matches and 1,416 narrower matches. It is important to note that the reference alignment only contains alignments between the descriptors of both thesauri, i.e., the concepts that are actually used for document indexing. The upper part of the hierarchy consists of non-descriptor concepts (or categories) that are only used to organize the descriptors below them. We take this specialty into account as we only assess the generated alignments between descriptors and ignore alignments between non-descriptors. However, this might change in the future, as the results of this track could be used to extend the reference alignment to the upper part of the hierarchy.</p>
+
+<p>
+The reference alignment we used for the evaluation is now available. <a href="reference.rdf">Download Reference Alignment</a>
+</p>
+
+<!--h3>SKOS vs. OWL</h3>
+
+<p>Thesauri -- and other, similar knowledge structures like classifications or taxonomies -- are often called lightweight ontologies. However, ontologies and thesauri fundamentally differ. This is also reflected by the fact that with SKOS a specific model for thesauri exists that is formulated in OWL. There, a <i>skos:Concept</i> is not an <i>owl:Class</i>. Concepts sometimes represent classes, for example the STW concept <i>Commodities</i>. However, this is not true for every <i>skos:Concept</i>, e.g., the STW concept <i>Germany</i> is an instance, not a class.</p>
+
+<p>Having a look at the subordinate concepts of <i>Commodities</i>, they mostly indeed represent classes, like <i>Metals</i> -- <i>Metal Products</i> -- <i>Razor</i>. Nevertheless, the relation in SKOS between these concepts is <i>skos:broader</i>, not <i>rdfs:subClassOf</i>. A subclass relationship states that if a class <i>B</i> is a subclass of a class <i>A</i>, then all instances of <i>B</i> will also be instances of <i>A</i>. Here, all metals are commodities, but not all metal products are metals: the razor consists partly of metal, but it is no metal.</p>
+
+<p>Thesauri are created for a very specific purpose and are used in a predetermined way. This is inter alia reflected by the distinction of descriptors and non-descriptors. Only descriptors are assigned to publications during the indexation or classification. All non-descriptors serve as additional information to provide the correct context or to build up a proper hierarchy. Such a distinction typically does not exist in an ontology.</p>
+
+<p>Very difficult for ontology matchers (not necessarily only automatic ones) is the quasi-synonymy of the describing labels for a concept. A <i>skos:altLabel</i> is often used to indicate subconcepts that should be subsumed under the concept in question to avoid extensive subclassing. As an example, the STW descriptor <i>14117-2</i> with the preferred English label <i>Tropical fruit</i> has German alternative labels like <i>pineapple</i>, <i>avocado</i>, and <i>kiwi</i>. In an (OWL) ontology, these alternative labels should be modeled as instances of the class <i>Tropical fruit</i>. In contrast, other alternative labels might really indicate alternative, synonymous terms for the preferred label.</p>
+
+<p>At last, instead of arbitrary semantic relations that are part of an ontology, in thesauri, relations like <i>skos:related</i> or <i>compoundEquivalence</i> in TheSoz exist. They often contain information for the (manual) use of the tehsaurus for indexing, i.e., which descriptor should be used in which case or how combinations of descriptors are to be used. Transferring them to ontological relations is not always possible and depends often on the single case.</p>
+
+<p>It can be seen that the development of a thesaurus matcher is indeed a challenge that differs from ontology matching. Nevertheless, the commonalities between thesauri and ontologies are large enough to pave the way for further developments by means of current ontology matchers.</p-->
+
+<h2>Experimental Setting</h2>
+
+<p>To compare the created alignments with the reference alignment, we use the Alignment API. For this first evaluation, we only included equivalence relations (<i>skos:exactMatch</i>).<br/></br>   
+The generated alignments are available <a href="rawAlignments.zip">here</a>.<br/></br>
+
+All matching processes have been performed on a Debian machine with one 2.4GHz core and 7GB RAM allocated to each system. The evaluation has been executed by using SEALS technologies. For ServOMap, ServOMapLt and Optima, we used slightly adapted ontologies as input since they cannot handle URIs with the last part only consisting of numbers as it is the case in the official version. Each participating system uses the OWL version. We computed precision, recall and F-measure (beta=1) for each matcher. We only consider equivalence correspondences between two descriptors as non-descriptors are not included in the reference alignment. This filtering improves the precision (~8%) as well as the F-measure (~4%) for all systems. Moreover, we measured the runtime, the size of the created alignment and checked whether a <i>1:1</i> alignment has been created. 
+To assess the results of the matchers, we developed three straightforward matching strategies, using the original SKOS version of the thesauri:
+<ul>
+	<li><i>MatcherPrefDE</i>: Compares the German lower-case preferred labels and generates a correspondence if these labels are completely equivalent.</li>
+	<li><i>MatcherPrefEN</i>: Compares the English lower-case preferred labels and generates a correspondence if these labels are completely equivalent.</li>
+	<li><i>MatcherPref</i>: Creates a correspondence, if either Matcher_prefDE or Matcher_prefEN or both create a correspondence.</li>
+	<li><i>MatcherAllLabels</i>: Creates a correspondences whenever at least one label (preferred or alternative, all languages) of an entity is equivalent to one label of another entity.</li> 	
+</ul>
+</p>
+
+<h2>Results</h2>
+
+<center>
+<noscript>
+<p>Java-Script need to be enabled!</p>
+</noscript>
+<div id="table"></div>
+</center>
+
+<p>
+All systems listed in the table above are sorted according to their F-measure values. Altogether 13 of the 21 submitted matching systems were able to create an alignment. Three matching systems (MaasMatch, MEDLEY, Wmatch) did not finish within the time frame of one week while five threw an exception.
+</p>
+<p>
+Of all these systems, GOMMA performs best in terms of F-measure, closely followed by ServOMapLt and LogMap. However, the precision and recall measures vary a lot across the top three systems. Depending on the application, an alignment either achieving high precision or recall is preferable. If recall is in the focus, the alignment created by GOMMA is probably the best choice with a recall about 90%. Other systems generate alignments with higher precision, e.g. ServOMap with over 70% precision, while mostly having significantly lower recall values (except for Hertuda).    
+</p>
+From the results obtained by the matching strategies taking the different types of labels into account, we can see that a matching based on preferred labels only, outperforms other matching strategies. <i>MatcherPref</i> achieves the highest F-measure in these tests. The results of <i>MatcherPrefDE</i> and <i>MatcherPrefEN</i> provide an insight into the language characteristics of both thesauri and the reference alignments. <i>MatcherPrefDE</i> achieves the highest precision value (nearly 90%), albeit with a recall of only 60%. Both thesauri as well as the reference alignment have been developed in Germany and focus on German terms. From the results of <i>MatcherPrefEN</i>, we can see the difference: precision and especially recall significantly decrease when only the preferred English labels are used. On the one hand, only about 80% of the found correspondences are correct and on the other hand, less than a half of all correspondences can be found this way. This can be a disadvantage for systems that use NLP techniques on English labels or rely on language-specific background knowledge like WordNet. 
+<p>
+The high precision values of the <i>pref</i> matchers reflect the fact that the preferred labels are chosen specifically to unambiguously identify the concepts. Our interpretation is that the English translations are partly not as precise as the original German terms (drop in precision) and not consistent regarding the English terminology (drop in recall). 
+</p>
+In contrast, the <i>MatcherAllLabels</i> achieves a quite high recall (90%) but a rather low precision (54%). This means that most but not all of the corresondences can be found by only having a look at equivalent labels. However, when following this idea, nearly a half of the found correspondences are incorrect. The rather high F-measure of <i>MatcherAllLabels</i> is therefore misleading, as at least if the results would be used unchecked in an retrieval system, a higher precision would clearly be preferred over a higher recall. In this respect, matchers like ServOMap show better results.
+In any case, it can be seen that a matching system using the original SKOS version could achieve a better result. The information loss when converting SKOS to OWL really matters.  
+<p>
+Concerning the runtime, LogMap as well as ServOMap are quite fast with a runtime below 50 seconds. These values are comparable or even better (LogMapLt) than both strategies computing the equivalence between preferred labels. Thus, they are very effective in matching large ontologies while achieving very good results. Other matchers take several hours or even days and do not produce better alignments in terms of F-measure. By computing the correlation between F-measure and runtime, we notice a slightly negative correlation (-0.085) but the small amount of samples is not sufficient to make a significant statement. However, we can say for certain that a longer runtime does not necessarily lead to better results.
+</p>
+We further observe that the <i>n:m</i> reference alignment affects the results because some matching systems (ServOMap, WeSeE, HotMatch, CODI, MapSSS) only create <i>1:1</i> alignments and discard correspondences with entities that already occur in another correspondence. Whenever a system creates a lot of \textit{n:m} correspondences, e.g., Hertuda and GOMMA, the recall significantly increases. This difference becomes clear when comparing ServOMapLt and ServOMap. Both systems mostly base on the same methods but ServOMapLt does not use the <i>1:1</i> filtering. Consequently, the recall increases and the precision decreases. 
+<p>
+Since the reference alignment has not been updated for about six years, it does not contain updates of both thesauri. Thus, new correct correspondences might be found by matching systems but they are indicated as incorrect because they are not included in the reference alignment. Therefore, we applied a manual evaluation to check whether the matching systems found correct correspondences which are not included in the reference alignment at all. In turn, these information can help to improve the reference alignment.
+</p>
+The manual evaluation has been conducted by domain experts.
+All newly detected correspondences, which have not been contained into the reference alignment yet, have been considered. Because exact matches have to be 1:1 relationships, only those correspondences have been examined, whose terms are descriptors and not yet involved into an existing correspondence. The other correspondences are considered as wrong as they contain a term, to or from which already a correspondence exists.
+<p>
+Since all matching systems delivered correspondences representing exact matches, they have been judged in this specific regard. That means that correspondences have been considered as wrong for now, whose terms cannot be seen as equivalent but maybe as related, broader or narrower.
+</p>
+<p>
+The matchers detected between 38 and 251 correspondences, which have not been in the reference alignment before. This includes especially terms, which hold a strong syntactical similarity or equivalence. But, some matching systems even detected difficult correspondences, e.g., between the German label for "automated production" ("Automatische Produktion") and "CAM", which has been identified by their associated non-preferred labels. Furthermore, correspondences of geographical terms have been detected, but some of the matchers have not been able to distinguish between the terms for citizens of a country, their language or the country itself, although these differences can be derived from the structure of the thesauri.
+</p>
+<p>
+But, the manual evaluation exposed several issues, which can either be explained by the typical behavior of matching systems or by domain-specific differences inside the thesauri. There are similar terms inside TheSoz and STW, which are used in totally different contexts, e.g. the term "self-assessment". Even when considering the structure of both thesauri these differences are difficult to identify. In general, term similarities often led to wrong correspondences, which is not surprising at first. But, in turn syntactically equal terms have not been detected simultaneously in some cases.
+By now, we did not have the possibility to evaluate the matching systems with the improved reference alignment but we plan to perform this additional evaluation soon. 
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+It is the first time this track takes place, so we cannot compare the results with previous ones. As it is also the first time for the matching systems participating in this track, they do not have any experience with the data. This has to be kept in mind if the results are compared to other tracks. 
+</p>
+<p>
+Nevertheless, the newly detected correspondences determine already a useful result for the maintainers of the two thesauri. The correct correspondences can be added to the existing reference alignment, which is already applied in information portals for supporting search term recommendation and query expansion services among differently indexed databases. As all matching systems delivered exact matches for the correspondences, some of the wrong correspondences will be examined again in the future, whether other relationships like broader, narrower or related matches can be considered for those.
+</p>
+<p>
+We expect further improvements, if the matchers are tailored more specifically to the library track, i.e., if they exploit the information found in the original SKOS version. A promising approach is also the use of additional knowledge, e.g., instance data -- resources that are indexed with different thesauri. 
+</p>
+<p>
+This time, we collected the results of the matchers as a first survey and compared them to our simple string-matching strategy that takes advantage of the different types of labels. In future evaluations, we assume that better results can be achieved and that these strategies simply form a baseline.
+</p>
+
+<h2>Acknowledgements</h2>
+
+<p>
+We would like to thank Andreas Oskar Kempf from GESIS for the manual evaluation of the new detected correspondences.
+</p>
+
+<h2>Contact</h2>
+
+<p>
+Dominique Ritze (Mannheim University Library)  dominique[.]ritze[at]bib[.]uni-mannheim[.]de<br/>
+Kai Eckert (Mannheim University Library)<br/>
+Benjamin Zapilko (GESIS)<br/>
+Joachim Neubert (ZBW)<br/>
+</p>
+
+<div class="address">
+Original page: <a href="http://web.informatik.uni-mannheim.de/oaei-library/results/2012/">http://web.informatik.uni-mannheim.de/oaei-library/results/2012/</a> [cached: 24/06/2014]
+<div class="footer">http://oaei.ontologymatching.org/2012/results/library/</div>
+</div>
+</body>
+</html>
